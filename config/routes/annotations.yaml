@@ -1,3 +1,11 @@
 controllers:
     resource: ../../src/Controller/
     type: annotation
+
+
+admin:
+        resource: ../../src/Controller/Admin/
+        type: annotation
+        # préfixe de route pour tous les contrôleurs contenus
+        # dans src/Controller/Admin/
+        prefix: /admin
