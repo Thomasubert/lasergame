@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <title>{% block title %}The Best Laser Game{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('lib/bootstrap/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('lib/bulma/bulma.min.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+              crossorigin="anonymous">
+
     {% endblock %}
 </head>
 <body>
 {# s'il y a un utilisateur connecté et qu'il a le rôle ROLE_ADMIN #}
 {#{% if is_granted('ROLE_ADMIN') %}#}
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  {#  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container navbar-nav">
             <a class="navbar-brand" href="#">
                 Admin
@@ -33,16 +36,16 @@
             </div>
         </div>
     </nav>
-{#{% endif %}#}
+#}{#{% endif %}#}{#
 <nav class="navbar navbar-expand-md navbar-dark bg-info">
     <div class="container navbar-nav">
         <a class="navbar-brand" href="#">
             LaserGame
         </a>
-        {# affiche le rendu de la méthode menu() de CategoryController #}
-        {#{{ render(controller(' ')) }}#}
+        #}{# affiche le rendu de la méthode menu() de CategoryController #}{#
+        #}{#{{ render(controller(' ')) }}#}{#
         <ul class="navbar-nav">
-            {# app.user : l'utilisateur connecté #}
+            #}{# app.user : l'utilisateur connecté #}{#
             {% if app.user is null %}
                 <li class="nav-item">
                     <a class="nav-link" href="#">
@@ -75,16 +78,16 @@
     </div>
 </nav>
 <div class="container">
-    {#
+    #}{#
     affichage des messages flash :
     boucle en clé => valeur sur les messages flash
     stockés dans la session (stockés par type de message)
     foreach ($allFlashMessages as $type => $messages)
-    #}
+    #}{#
 
     {% for type, messages in app.session.flashBag.all %}
         {% for message in messages %}
-            {# pour la classe alert-danger du bootstrap #}
+            #}{# pour la classe alert-danger du bootstrap #}{#
             {% if type == 'error' %}
                 {% set type = 'danger' %}
             {% endif %}
@@ -92,7 +95,72 @@
                 {{ message|raw }}
             </div>
         {% endfor %}
-    {% endfor %}
+    {% endfor %}#}
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">
+                Home
+            </a>
+
+            <a class="navbar-item">
+                Documentation
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                        About
+                    </a>
+                    <a class="navbar-item">
+                        Jobs
+                    </a>
+                    <a class="navbar-item">
+                        Contact
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                        Report an issue
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Inscription</strong>
+                    </a>
+                    <a class="button is-light">
+                        Connexion
+                    </a>
+                    <span class="icon is-medium">
+                        <a href="#" title="Aide">
+                            <i class="far fa-question-circle"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
     {% block body %}{% endblock %}
 </div>
 
