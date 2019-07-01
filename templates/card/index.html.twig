@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CardController!{% endblock %}
+
+{% block body %}
+    <h1>Cartes</h1>
+
+    <a href="{{ path('app_card_edit') }}"
+       class="btn btn-outline-primary mb-3">
+        Ajouter une carte
+    </a>
+
+    <table class="table">
+        <tr>
+            <th>Code Centre</th>
+            <th>Code carte</th>
+            <th>Clé</th>
+            <th>Nombre de parties</th>
+            <th width="250px"></th>
+        </tr>
+        {% for card in cards%}
+            <tr>
+                <td>{{ card.code_center }}</td>
+                <td>{{ card.code_card}}</td>
+                <td>{{ card.checksum }}</td>
+                <td>{{ card.number_of_games }}</td>
+
+                <td>
+                    <a href="{{ path('app_card_edit', {'id': card.id}) }}"
+                       class="btn btn-primary">
+                        Modifier
+                    </a>
+                    <a href="{{ path('app_card_delete', {'id': card.id}) }}"
+                       class="btn btn-danger">
+                        Supprimer
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center">
+                    Aucun résultat
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

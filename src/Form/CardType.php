@@ -2,27 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Card;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class CardType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastname')
-            ->add('firstname')
-            ->add('email')
-            ->add('phone')
+            ->add('code_center')
+            ->add('code_card')
+            ->add('checksum')
+            ->add('status')
+            ->add('number_of_games')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Card::class,
         ]);
     }
 }
