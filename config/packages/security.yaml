@@ -17,6 +17,19 @@ security:
         main:
             anonymous: true
 
+            remember_me:
+                secret:     '%kernel.secret%'
+                lifetime:   604800
+                path:       /
+                token_provider: 'Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider'
+
+            form_login:
+                remember_me: true
+
+            logout:
+                path: app_connexion_logout
+
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 

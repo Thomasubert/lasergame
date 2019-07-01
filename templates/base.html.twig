@@ -12,84 +12,15 @@
         <link rel="stylesheet" href="{{ asset('lib/bulma/bulma.min.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
               crossorigin="anonymous">
+        <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="image/favicon.ico" type="image/x-icon">
     {% endblock %}
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-info">
 
-    <div class="container navbar-nav">
-
-        <a class="navbar-brand" href="#">
-
-            LaserGame
-
-        </a>
-        
-            {% if app.user is null %}
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="{{ path('app_registration_register') }}">
-
-
-                        Inscription
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="{{ path('app_connexion_index') }}">
-
-                        Connexion
-
-                    </a>
-
-                </li>
-
-            {% else %}
-
-                <li class="nav-item">
-
-                            <span class="nav-link">
-
-                                {{ app.user }}
-
-                            </span>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link" href="#">
-
-                        Déconnexion
-
-                    </a>
-
-                </li>
-
-            {% endif %}
-
-            <li class="nav-item">
-
-                <a class="nav-link" href="{{ path('app_contact_index') }}">
-
-                    Contact
-
-                </a>
-
-            </li>
-
-        </ul>
-
-    </div>
-
-</nav>
 
 <div class="container">
 
@@ -141,13 +72,13 @@
                 </a>
 
                 <div class="navbar-dropdown">
-                    <a class="navbar-item" href="">
+                    <a class="navbar-item" href="#">
                         Formule
                     </a>
                     <a class="navbar-item">
                         Actualité
                     </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item"href="{{ path('app_contact_index') }}">
                         Contact
                     </a>
                     <hr class="navbar-divider">
@@ -161,10 +92,10 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary">
+                    <a class="button is-primary" href="{{ path('app_registration_register') }}">
                         <strong>Inscription</strong>
                     </a>
-                    <a class="button is-light">
+                    <a class="button is-light"href="{{ path('app_connexion_index') }}">
                         Connexion
                     </a>
                     <span class="icon is-medium">

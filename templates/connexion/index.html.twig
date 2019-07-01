@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ConnexionController!{% endblock %}
+{% block title %} Connexion{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<h1>Connexion</h1>
 
-<div class="example-wrapper">
-    <h1>Here is Connexion Twig{{ controller_name }}! ✅</h1>
+    <form method="post">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/lasergame/src/Controller/ConnexionController.php'|file_link(0) }}">src/Controller/ConnexionController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/lasergame/templates/connexion/index.html.twig'|file_link(0) }}">templates/connexion/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <div class="field">
+            <label for="_username" class="label">Username:</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input" type="text" placeholder="username" name="_username">
+                <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>
+            </div>
+        </div>
+
+            <div class="field">
+                <label for="_pswd" class="label">Password:</label>
+                <p class="control has-icons-left">
+                    <input class="input" type="password" placeholder="Password" name="_pswd">
+                    <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+                </p>
+            </div>
+
+            <div class="field">
+                <p class="control">
+                    <button class="button is-success" type="submit">
+                        Login
+                    </button>
+                </p>
+            </div>
+
+        <input type="checkbox" id="remember_me" name="_remember_me">
+        <label for="remember_me"> Se souvenir de moi</label>
+
+
+
+    </form>
+
+
+
 {% endblock %}
