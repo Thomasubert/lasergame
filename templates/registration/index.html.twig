@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegistrationController!{% endblock %}
+{% block title %}Inscription - {{ parent() }}{% endblock %}
 
 {% block body %}
 <style>
@@ -9,7 +9,25 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Here is Registration Twig{{ controller_name }}! ✅</h1>
+    <h1>Inscription  ✅</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.lastname) }}
+    {{ form_row(form.firstname) }}
+    {{ form_row(form.phone) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary">
+            Enregistrer
+        </button>
+    </div>
+    {{ form_end(form) }}
+
+
+
+
 
     This friendly message is coming from:
     <ul>
@@ -18,3 +36,7 @@
     </ul>
 </div>
 {% endblock %}
+
+
+
+
