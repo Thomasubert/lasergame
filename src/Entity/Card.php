@@ -23,7 +23,7 @@ class Card
      * @Assert\NotBlank(message="Le code du centre de ne peut pas être nul.")
      *
      */
-    private $code_center = 132;
+    private $code_center;
 
     /**
      * @ORM\Column(type="integer")

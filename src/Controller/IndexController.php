@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/" )
+     * @Route("/")
      */
     public function index()
     {
