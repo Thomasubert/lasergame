@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CardRepository")
@@ -19,12 +20,14 @@ class Card
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le code du centre de ne peut pas être nul.")
      *
      */
     private $code_center = 132;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le code de la carte ne peut pas être nul.")
      */
     private $code_card;
 

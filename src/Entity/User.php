@@ -50,6 +50,11 @@ class User implements UserInterface
      */
     private $phone;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -161,5 +166,12 @@ class User implements UserInterface
     public function getPassword()
     {
         // TODO: Implement getPassword() method.
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 }
