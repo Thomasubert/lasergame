@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block body %}
+    <h1>Ajout d'un user</h1>
+
+
+    {{ form_start(form) }}
+
+
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary">
+            Créer une nouvelle carte
+        </button>
+        <a href="{{ path('app_card_index') }}"
+           class="btn btn-outline-secondary">
+            Retour
+        </a>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+
+

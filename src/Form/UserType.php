@@ -37,6 +37,8 @@ class UserType extends AbstractType
              ]
          )
             ->add('phone')
+            ->add('password')
+            ->add('birthdate')
         ;
     }
 
