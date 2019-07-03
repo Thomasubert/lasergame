@@ -4,22 +4,26 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
  * Class ConnexionController
  * @package App\Controller
- * @Route("connexion ")
+ * @Route("/")
  */
 
 class ConnexionController extends AbstractController
 {
+
     /**
-     * @Route("/")
+     * @Route("/déconnexion")
      */
-    public function index()
+
+    public function logout()
     {
-        return $this->render('connexion/index.html.twig', [
-            'controller_name' => 'ConnexionController',
-        ]);
+
     }
+
+
+
 }

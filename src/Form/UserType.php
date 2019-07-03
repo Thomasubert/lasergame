@@ -4,8 +4,11 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,9 +17,21 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastname')
-            ->add('firstname')
-            ->add('email')
+            ->add('lastname',
+                TextType::class,
+                [
+                    'label' => 'Lastname'
+                ])
+            ->add('firstname',
+                TextType::class,
+                [
+                    'label' => 'Firstname'
+                ])
+            ->add('email',
+                EmailType::class,
+                [
+                    'label' => 'Email'
+                ])
          //   ->add('roles')
             ->add('password',
              // 2 champs qui doivent avoir la même valeur
@@ -36,9 +51,16 @@ class UserType extends AbstractType
                  'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
              ]
          )
-            ->add('phone')
+
+            ->add('phone',
+                TelType::class,
+                [
+                    'label' => 'Tel.'
+                ])
+  
             ->add('password')
             ->add('birthdate')
+
         ;
     }
 
