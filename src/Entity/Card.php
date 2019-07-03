@@ -46,6 +46,11 @@ class Card
      */
     private $number_of_games;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="card", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,6 +112,24 @@ class Card
     public function setNumberOfGames(?int $number_of_games): self
     {
         $this->number_of_games = $number_of_games;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newCard = $user === null ? null : $this;
+        if ($newCard !== $user->getCard()) {
+            $user->setCard($newCard);
+        }
 
         return $this;
     }
