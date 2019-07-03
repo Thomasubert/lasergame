@@ -18,16 +18,22 @@ security:
             anonymous: true
 
             remember_me:
-                secret:     '%kernel.secret%'
-                lifetime:   604800
-                path:       /
-                token_provider: 'Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider'
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                #token_provider: 'Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider'
 
             form_login:
+                login_path: app_security_login
+                check_path: app_security_login
+                use_referer: true
                 remember_me: true
 
             logout:
                 path: app_connexion_logout
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
 
             # activate different ways to authenticate
@@ -41,3 +47,4 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

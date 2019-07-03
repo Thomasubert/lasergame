@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+    <div class="field">
+    <label for="inputEmail" class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="input" placeholder="Email" required autofocus>
+            <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+        </div>
+    </div>
+
+    <div class="field">
+    <label for="inputPassword" class="label">Password</label>
+        <p class="control has-icons-left">
+    <input type="password" name="password" id="inputPassword" class="input" placeholder="Password" required>
+            <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+        </p>
+    </div>
+
+
+
+        <div class="checkbox mb-3">
+            <label>
+                <input id="remember_me" type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+
+
+    <div class="control">
+    <button class="button is-primary" type="submit">
+        Sign in
+    </button>
+    </div>
+
+</form>
+{% endblock %}

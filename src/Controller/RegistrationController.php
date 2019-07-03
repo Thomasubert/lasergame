@@ -22,6 +22,9 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $em)
     {
+      /*  if ($this->getUser()){
+            return $this->redirectToRoute('app_index_index');
+        }*/
 
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -58,5 +61,15 @@ class RegistrationController extends AbstractController
                 'form' => $form->createView()
             ]
         );
+    }
+
+    public function accountInfo()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+    }
+
+    public function resetPassword()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
     }
 }

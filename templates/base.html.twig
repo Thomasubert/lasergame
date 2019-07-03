@@ -10,6 +10,7 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('lib/bulma/bulma.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/index.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
               crossorigin="anonymous">
         <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
@@ -21,7 +22,7 @@
 <body>
 
 
-<div class="container">
+<div class="container" id="nav-container">
 
     {% for type, messages in app.session.flashBag.all %}
 
@@ -44,8 +45,8 @@
     
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        <a class="navbar-item" href="{{ path('app_index_index') }}">
+           LASER GAME
         </a>
 
         <a id="navbar-burger-id" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -80,10 +81,7 @@
                     <a class="navbar-item"href="{{ path('app_contact_index') }}">
                         Contact
                     </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                        Report an issue
-                    </a>
+
                 </div>
             </div>
         </div>
@@ -91,12 +89,28 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary" href="{{ path('app_registration_register') }}">
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false  %}
+                    <a class="button is-rounded is-primary is-focused" href="{{ path('app_registration_register') }}">
                         <strong>Inscription</strong>
                     </a>
-                    <a class="button is-light"href="{{ path('app_connexion_index') }}">
+                    {% endif %}
+
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false  %}
+                    <a class="button is-rounded is-primary is-outlined"href="{{ path('app_login') }}">
                         Connexion
                     </a>
+                    {% endif %}
+
+
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <span class="icon is-medium">
+                        <a href="{{ path('app_connexion_logout') }}" title="Déconnexion">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </span>
+                    {% endif %}
+
+
                     <span class="icon is-medium">
                         <a href="#" title="Aide">
                             <i class="far fa-question-circle"></i>
@@ -107,10 +121,10 @@
         </div>
     </div>
 </nav>
+</div>
 
     {% block body %}{% endblock %}
 
-</div>
 
 
 
