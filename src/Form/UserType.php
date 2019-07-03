@@ -51,11 +51,16 @@ class UserType extends AbstractType
                  'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
              ]
          )
+
             ->add('phone',
                 TelType::class,
                 [
                     'label' => 'Tel.'
                 ])
+  
+            ->add('password')
+            ->add('birthdate')
+
         ;
     }
 
