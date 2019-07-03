@@ -72,6 +72,12 @@ class AddressController extends AbstractController
         );
     }
 
+    /**
+     * @param EntityManagerInterface $em
+     * @param Address $address
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/delete/{id}")
+     */
     public function delete(EntityManagerInterface $em, Address $address)
     {
         $em->remove($address);
