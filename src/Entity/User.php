@@ -168,9 +168,15 @@ class User implements UserInterface
      *
      * @return (Role|string)[] The user roles
      */
-    public function getRoles()
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        // TODO: Implement getRoles() method.
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
     /**
