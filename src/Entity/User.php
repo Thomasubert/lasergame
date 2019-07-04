@@ -50,6 +50,9 @@ class User implements UserInterface
      */
     private $phone;
 
+
+
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -70,6 +73,8 @@ class User implements UserInterface
      * @ORM\Column(type="date", nullable=true)
      */
     private $birthdate;
+
+
 
 
 
@@ -115,7 +120,7 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        //$this->plainPassword = null;
     }
 
     public function getLastname(): ?string
@@ -154,6 +159,9 @@ class User implements UserInterface
         return $this;
     }
 
+
+
+
     /**
      * Returns the roles granted to the user.
      *
@@ -170,7 +178,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return ['ROLE_USER'];
     }
 
     /**
@@ -183,7 +191,7 @@ class User implements UserInterface
      */
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->password;
     }
 
     public function setPassword(string $password): self
@@ -228,5 +236,7 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 
 }

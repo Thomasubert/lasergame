@@ -19,6 +19,34 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+/*    public function search(array  $filters = [])
+    {
+
+        $qb = $this->createQueryBuilder('u');
+
+        $qb->orderBy('u.firstname', 'DESC');
+
+        if (!empty($filters['user'])){
+            $qb
+                ->andWhere('u.firstname = :user')
+                ->setParameter(':user', $filters['user']);
+        }
+
+        if (!empty($filters('card'))){
+            $qb
+                ->andWhere('u.card = :card')
+                ->setParameter(':card', $filters['card']);
+        }
+
+        $query = $qb->getQuery();
+
+        dump($query->getSQL());
+
+        return $query->getResult();
+    }*/
+
+
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
