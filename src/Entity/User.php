@@ -74,6 +74,11 @@ class User implements UserInterface
      */
     private $birthdate;
 
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $role = 'ROLE_USER';
+
 
 
 
@@ -178,7 +183,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return [$this->role];
     }
 
     /**
@@ -233,6 +238,18 @@ class User implements UserInterface
     public function setBirthdate(?\DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }

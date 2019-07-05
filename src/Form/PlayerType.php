@@ -7,6 +7,7 @@ use App\Entity\Card;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -60,11 +61,11 @@ class PlayerType extends AbstractType
                 ]
             )
             ->add('birthdate',
-                DateType::class,
+                BirthdayType::class,
                 [
                     'label' => 'Date de naissance du joueur',
                     'required' => false,
-                    'widget' => 'single_text',
+                    'widget' => 'choice',
                     'format' => 'dd/MM/yyyy',
                     'html5' => false
                 ])

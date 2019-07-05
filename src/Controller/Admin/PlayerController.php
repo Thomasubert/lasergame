@@ -7,11 +7,13 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Form\PlayerType;
 
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class PlayerController
@@ -21,6 +23,18 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PlayerController extends AbstractController
 {
+
+    /**
+     * @Route("/")
+     */
+    public function index(UserRepository $repository)
+    {
+        $users = $repository->findBy([], ['lastname' => 'ASC']);
+
+        return $this->render('admin/index.html.twig',[
+            'users' => $users
+        ]);
+    }
     /**
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -29,7 +43,7 @@ class PlayerController extends AbstractController
      * @Route("/edit/{id}", defaults={"id": null}, requirements={"id": "\d+"})
      */
     public function edit (Request $request,
-                          EntityManagerInterface $em,
+                          EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder,
                           $id)
     {
 
@@ -48,21 +62,29 @@ class PlayerController extends AbstractController
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+                $password = $passwordEncoder->encodePassword(
+                    $user,
+                    $user->getPassword()
+                );
+
+                $user->setPassword($password);
+
                 $em->persist($user);
                 $em->flush();
 
                 $this->addFlash('success', 'Le joueur est enregistré');
 
-                return $this->redirectToRoute('');
+                return $this->redirectToRoute('app_admin_player_edit');
             } else {
                 $this->addFlash('error', 'Le formulaire contient des erreurs');
             }
         }
 
-        return $this->render('/player/edit.html.twig',
+        return $this->render('/admin/edit.html.twig',
             [
                 'form' => $form->createView()
             ]
         );
     }
+
 }
