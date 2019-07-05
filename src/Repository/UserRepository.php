@@ -24,19 +24,26 @@ class UserRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('u');
 
-        $qb->orderBy('u.firstname', 'DESC');
+        //$qb->orderBy('u.lastname', 'DESC');
 
-        if (!empty($criteria['user'])){
+        //if (!empty($criteria['user'])) {
             $qb
-                ->andWhere('u.firstname = :user')
-                ->setParameter(':user', $criteria['user']);
-        }
+                ->where('u.lastname = :lastname')
+                ->setParameter('lastname', $criteria['lastname']);
 
-        $query = $qb->getQuery();
+        //}
 
-        dump($query->getSQL());
 
-        return $query->getResult();
+        //$query = $qb->getQuery();
+
+        //dump($query->getSQL());
+
+        //$qb->orderBy('u.lastname', 'DESC');
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+
     }
 
 

@@ -33,6 +33,7 @@ class SearchController extends AbstractController
             $user = $userRepository->searchUser($criteria);
 
             dd($user);
+
         }
         return $this->render('search/user.html.twig',
             [
