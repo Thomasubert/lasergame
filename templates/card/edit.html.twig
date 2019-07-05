@@ -2,19 +2,21 @@
 
 {% block title %}
 
-{% endblock %}
+{% endblock %}            
 
 
 {% block body %}
-    <h1>Ajout d'un user</h1>
-
-
+    <h1>Ajout d'une carte</h1>
     {{ form_start(form) }}
+    {{ form_row(form.codeCenter) }}
+    {{ form_row(form.codeCard) }}
+    {{ form_row(form.checksum) }}
+    {{ form_row(form.status) }}
+    {{ form_row(form.number_of_games) }}
 
-
-    <div class="text-right">
+        <div class="text-right">
         <button type="submit" class="btn btn-primary">
-            Créer une nouvelle carte
+               Créer une nouvelle carte
         </button>
         <a href="{{ path('app_card_index') }}"
            class="btn btn-outline-secondary">
@@ -23,6 +25,4 @@
     </div>
     {{ form_end(form) }}
 {% endblock %}
-
-
 

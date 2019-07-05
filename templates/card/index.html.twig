@@ -8,6 +8,10 @@
     <a href="{{ path('app_card_edit') }}"
        class="btn btn-outline-primary mb-3">
         Ajouter une carte
+    </a> <br/>
+    <a href="{{ path('app_card_edit') }}"
+       class="btn btn-outline-primary mb-3">
+        Lister les cartes
     </a>
 
     <table class="table">
@@ -20,10 +24,11 @@
         </tr>
         {% for card in cards%}
             <tr>
-                <td>{{ card.code_center }}</td>
-                <td>{{ card.code_card}}</td>
-                <td>{{ card.checksum }}</td>
-                <td>{{ card.number_of_games }}</td>
+                <td>{{ card.getCodeCentre() }}</td>
+                <td>{{ card.getCodeCard()}}</td>
+                <td>{{ card.getChecksum() }}</td>
+                <td>{{ card.getStatus() }}</td>
+                <td>{{ card.getNumberOfGames() }}</td>
 
                 <td>
                     <a href="{{ path('app_card_edit', {'id': card.id}) }}"

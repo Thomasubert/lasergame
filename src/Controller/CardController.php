@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
+
+
 /**
  * Class CardController
  * @package App\Controller
@@ -78,9 +82,6 @@ class CardController extends AbstractController
                 $this->addFlash('error', 'Le formulaire contient des erreurs');
             }
         }
-
-
-        var_dump(random_int(100, 999));
 
 
         return $this->render('/card/edit.html.twig',
