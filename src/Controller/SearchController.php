@@ -3,7 +3,9 @@
 
 namespace App\Controller;
 
+use App\Form\SearchCardType;
 use App\Form\SearchUserType;
+use App\Repository\CardRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,11 +34,46 @@ class SearchController extends AbstractController
 
             $user = $userRepository->searchUser($criteria);
 
-            dd($user);
+            return $this->render('search/user.html.twig',
+                [
+                    'user' => $user,
+                    'search_form' => $searchUserForm->createView(),
+                ]);
 
         }
+
+        $user = $searchUserForm->getData();
+
         return $this->render('search/user.html.twig',
             [
+                'user' => $user,
+                'search_form' => $searchUserForm->createView(),
+            ]);
+    }
+
+    public function searchCard(Request $request,CardRepository $cardRepository )
+    {
+        $searchCardForm = $this->createForm(SearchCardType::class);
+
+        if($searchCardForm->handleRequest($request)->isSubmitted() && $searchCardForm->isValid())
+        {
+            $criteria = $searchCardForm->getData();
+
+            $card = $cardRepository->searchCard($criteria);
+
+            return $this->render('search/user.html.twig',
+                [
+                    'card' => $card,
+                    'search_form' => $searchCardForm->createView(),
+                ]);
+
+        }
+
+        $user = $searchUserForm->getData();
+
+        return $this->render('search/user.html.twig',
+            [
+                'user' => $user,
                 'search_form' => $searchUserForm->createView(),
             ]);
     }
