@@ -17,14 +17,15 @@ class CardGenerator
      * @param int $numberModulo
      * @return int
      */
-    public function generate(int $numberDigit, int $numberModulo): iterable
+    public function generate(int $numberDigit): iterable
     {
 
         # Generate card code
         $this->codeCarte = $this->intCodeRandom($numberDigit);
 
+
         # Check modulo
-        $this->checkMod = ($this->codeCentre + $this->codeCarte) % $numberModulo;
+        $this->checkMod = ($this->codeCentre + $this->codeCarte) % 9;
 
         # Return card code
         return [

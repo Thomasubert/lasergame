@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\CardGenerator;
 use App\Entity\Card;
 use App\Form\CardType;
 use App\Repository\CardRepository;
@@ -10,6 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+
+
+
+
 
 /**
  * Class CardController
@@ -39,11 +44,13 @@ class CardController extends AbstractController
     /**
      * @param Request $request
      * @param EntityManagerInterface $em
-     * @param $id
-     * @Route("/edit/{id}", defaults={"id":null}, requirements={"id": "\d+"} )
+     * @param CardGenerator $cardGenerator
+     * @Route("/edit")
      */
-    public function edit(Request $request, EntityManagerInterface $em, $id)
+    public function edit(Request $request, EntityManagerInterface $em,CardGenerator $cardGenerator,CardRepository $cardRepository)
     {
+
+  /*
         if (is_null($id)) {//création
             $card = new Card();
         } else {//modification
@@ -54,39 +61,44 @@ class CardController extends AbstractController
                 throw new NotFoundHttpException();
             }
         }
+  */
+
+        $card = new Card();
+
+       // $form = $this->createForm(CardType::class, $card);
+
+        //$form->handleRequest($request);
 
         // création du formulaire relié à la catégorie
-        $form = $this->createForm(CardType::class, $id);
+        //$form = $this->createForm(CardType::class, $id);
 
         // le formulaire analyse la requête et fait le mapping
         // avec l'entité s'il a été soumis
-        $form->handleRequest($request);
+        //$form->handleRequest($request);
 
-        // si le formulaire est envoyé / a été soumis
-        if ($form->isSubmitted()) {
-            if ($form->isValid()) {
+        //var_dump($cardGenerator->generate(6, 9)['codeCarte']);
+
+        //$form->get('codeCard')->setData($cardGenerator->generate(6, 9)['codeCarte']);
+        //$form->get('checksum')->setData($cardGenerator->generate(6, 9)['checkMod']);
+
+
+        $card->setCodeCard($cardGenerator->generate(6)['codeCarte']);
+        $card->setChecksum($cardGenerator->generate(6)['checkMod']);
+                $this->addFlash('success', 'La carte est enregistrée.');
 
                 //enregistrement en bdd
                 $em->persist($card);
                 $em->flush();
 
-                $this->addFlash('success', 'La carte est enregistrée.');
+        $cards = $cardRepository->findAll();
 
-                //redirection vers la liste
-                return $this->redirectToRoute('app_card_index');
-            } else {
-                $this->addFlash('error', 'Le formulaire contient des erreurs');
-            }
-        }
-
-
-        var_dump(random_int(100, 999));
-
+        $cardLast=end($cards);
 
         return $this->render('/card/edit.html.twig',
             [
-                // passage du formulaire au template
-                'form' => $form->createView()
+
+                'card'=>$cardGenerator->generate(6,9),
+                'cardLast' => $cardLast,
             ]
         );
     }

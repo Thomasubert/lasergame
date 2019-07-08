@@ -57,8 +57,6 @@ class UserType extends AbstractType
                 [
                     'label' => 'Tel.'
                 ])
-  
-            ->add('password')
             ->add('birthdate')
 
         ;
