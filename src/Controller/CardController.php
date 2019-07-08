@@ -47,7 +47,7 @@ class CardController extends AbstractController
      * @param CardGenerator $cardGenerator
      * @Route("/edit")
      */
-    public function edit(Request $request, EntityManagerInterface $em,CardGenerator $cardGenerator)
+    public function edit(Request $request, EntityManagerInterface $em,CardGenerator $cardGenerator,CardRepository $cardRepository)
     {
 
   /*
@@ -82,18 +82,23 @@ class CardController extends AbstractController
         //$form->get('checksum')->setData($cardGenerator->generate(6, 9)['checkMod']);
 
 
-        $card->setCodeCard($cardGenerator->generate(6, 9)['codeCarte']);
-        $card->setChecksum($cardGenerator->generate(6, 9)['checkMod']);
+        $card->setCodeCard($cardGenerator->generate(6)['codeCarte']);
+        $card->setChecksum($cardGenerator->generate(6)['checkMod']);
                 $this->addFlash('success', 'La carte est enregistrée.');
 
                 //enregistrement en bdd
                 $em->persist($card);
                 $em->flush();
 
+        $cards = $cardRepository->findAll();
+
+        $cardLast=end($cards);
+
         return $this->render('/card/edit.html.twig',
             [
 
-                'card'=>$cardGenerator->generate(6,9)
+                'card'=>$cardGenerator->generate(6,9),
+                'cardLast' => $cardLast,
             ]
         );
     }
