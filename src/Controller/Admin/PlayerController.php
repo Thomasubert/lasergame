@@ -87,4 +87,16 @@ class PlayerController extends AbstractController
         );
     }
 
+    /**
+     * @Route("/suppression/{id}")
+     */
+    public function delete(EntityManagerInterface $em, User $user)
+    {
+        $em->remove($user);
+        $em->flush();
+
+        $this->addFlash('success', "Le joueur est supprimé");
+
+        return $this->redirectToRoute('app_admin_player_index');
+    }
 }
