@@ -89,17 +89,20 @@
                 </div>
             </div>
         </div>
+        {% if is_granted('ROLE_ADMIN')  %}
         <div id="navbar-menu-id" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item"href="{{ path('app_card_index') }}">
-                    Cart
+                <a class="navbar-item"href="{{ path('app_admin_card_index') }}">
+                    <strong> Gestion Cartes Fidélité</strong>
                 </a>
 
-                <a class="navbar-item">
-                    User
-                </a>
+                {#<a class="navbar-item">
+                    <strong>  User </strong>
+                </a>#}
             </div>
+        </div>
 
+        {% endif %}
 
 
 
@@ -112,6 +115,9 @@
                             <strong>Ajouter un joueur</strong>
                         </a>
                     {% endif %}
+
+
+
 
                     {% if is_granted('ROLE_ADMIN')  %}
                         <a class="button is-rounded is-primary is-outlined" href="{{ path('app_admin_player_index') }}">

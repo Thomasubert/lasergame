@@ -114,7 +114,8 @@ class User implements UserInterface
     /**
 
      * @ORM\Column(type="date", nullable=true)
-
+     */
+    private $birthdate;
 
     /**
      * @ORM\Column(type="string", length=20)
@@ -124,7 +125,7 @@ class User implements UserInterface
 
 
 
-    private $birthdate;
+
 
     public function getId(): ?int
 

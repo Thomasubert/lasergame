@@ -44,7 +44,7 @@ class UserController extends AbstractController
      * @param Request $request
      * @param EntityManagerInterface $em
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
      * @Route("/edit/{id}", defaults={"id": null}, requirements={"id": "\d+"})
      */
     public function edit (Request $request,
