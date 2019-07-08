@@ -19,22 +19,33 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+    public function searchUser($criteria)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+        $qb = $this->createQueryBuilder('u');
+
+        //$qb->orderBy('u.lastname', 'DESC');
+
+        //if (!empty($criteria['user'])) {
+            $qb
+                ->where('u.lastname = :lastname')
+                ->setParameter('lastname', $criteria['lastname']);
+
+        //}
+
+
+        //$query = $qb->getQuery();
+
+        //dump($query->getSQL());
+
+        //$qb->orderBy('u.lastname', 'DESC');
+
+        return $qb
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
+
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?User
