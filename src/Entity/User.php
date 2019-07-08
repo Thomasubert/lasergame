@@ -186,6 +186,7 @@ class User implements UserInterface
 
         // If you store any temporary, sensitive data on the user, clear it here
 
+
         //$this->plainPassword = null;
 
     }
@@ -276,7 +277,9 @@ class User implements UserInterface
 
     {
 
+
         return ['ROLE_USER'];
+
 
     }
 
@@ -300,7 +303,9 @@ class User implements UserInterface
 
     {
 
+
         return $this->password;
+
 
     }
 
