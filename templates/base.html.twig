@@ -89,10 +89,35 @@
                 </div>
             </div>
         </div>
+        <div id="navbar-menu-id" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item"href="{{ path('app_card_index') }}">
+                    Cart
+                </a>
+
+                <a class="navbar-item">
+                    User
+                </a>
+            </div>
+
+
+
 
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
+
+                    {% if is_granted('ROLE_ADMIN')  %}
+                        <a class="button is-rounded is-primary is-focused" href="{{ path('app_admin_player_edit') }}">
+                            <strong>Ajouter un joueur</strong>
+                        </a>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN')  %}
+                        <a class="button is-rounded is-primary is-outlined" href="{{ path('app_admin_player_index') }}">
+                            <strong>Liste des joueurs</strong>
+                        </a>
+                    {% endif %}
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false  %}
                     <a class="button is-rounded is-primary is-focused" href="{{ path('app_registration_register') }}">
                         <strong>Inscription</strong>

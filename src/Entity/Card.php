@@ -23,13 +23,13 @@ class Card
      * @Assert\NotBlank(message="Le code du centre de ne peut pas être nul.")
      *
      */
-    private $code_center;
+    private $codeCenter=123;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Le code de la carte ne peut pas être nul.")
      */
-    private $code_card;
+    private $codeCard;
 
     /**
      * @ORM\Column(type="integer")
@@ -37,9 +37,9 @@ class Card
     private $checksum;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string", length=20)
      */
-    private $status = [];
+    private $status = "libre";
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -58,24 +58,24 @@ class Card
 
     public function getCodeCentre(): ?int
     {
-        return $this->code_center;
+        return $this->codeCenter;
     }
 
     public function setCodeCentre(int $code_center): self
     {
-        $this->code_center = $code_center;
+        $this->codeCenter = $code_center;
 
         return $this;
     }
 
     public function getCodeCard(): ?int
     {
-        return $this->code_card;
+        return $this->codeCard;
     }
 
-    public function setCodeCard(int $code_card): self
+    public function setCodeCard(int $codeCard): self
     {
-        $this->code_card = $code_card;
+        $this->codeCard = $codeCard;
 
         return $this;
     }
@@ -92,12 +92,14 @@ class Card
         return $this;
     }
 
-    public function getStatus(): ?array
+    public function getStatus():?string
     {
         return $this->status;
     }
 
-    public function setStatus(array $status): self
+
+
+    public function setStatus($status): self
     {
         $this->status = $status;
 

@@ -29,6 +29,8 @@ class RegistrationController extends AbstractController
 
         $form->handleRequest($request);
 
+
+
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $password = $passwordEncoder->encodePassword(
@@ -70,4 +72,6 @@ class RegistrationController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
     }
+
+
 }

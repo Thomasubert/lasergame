@@ -21,7 +21,7 @@ security:
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /
-                #token_provider: 'Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider'
+
 
             form_login:
                 login_path: app_security_login
