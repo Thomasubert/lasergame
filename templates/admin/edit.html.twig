@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(form) }}
+    <div class="field">
+        <div class="control"></div>
+        <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>{{ form_row(form.lastname) }}
+
+    </div>
+
+    <div class="field">
+        <div class="control">
+
+           <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span> {{ form_row(form.firstname) }}
+    </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <i class="far fa-calendar-alt"></i>{{ form_row(form.birthdate) }}
+    </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <i class="fas fa-envelope"></i> {{ form_row(form.email) }}
+    </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+
+    {{ form_row(form.phone) }}
+    </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+    {{ form_row(form.address) }}
+    </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+    {{ form_row(form.password) }}
+    </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+    {{ form_row(form.card) }}
+    </div>
+    </div>
+
+    <div class="control">
+        <button class="button is-primary" type="submit">
+            Enregistrer
+        </button>
+    </div>
+    {{ form_end(form) }}
+
+
+
+
+
+{% endblock %}

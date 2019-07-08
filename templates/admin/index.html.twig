@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table">
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de naissance</th>
+        <th>Email</th>
+        <th width="250px"></th>
+    </tr>
+
+    {%  for user in users %}
+
+        <tr>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.birthdate|date('Y-m-d') }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+
+                <a href="{{ path('app_admin_player_edit', {'id': user.id}) }}"
+                   class="button is-info">
+                    Modifier
+                </a>
+                <a href="{{ path('app_admin_player_delete', {'id': user.id}) }}"
+                   class="button is-danger">
+                    Supprimer
+                </a>
+            </td>
+
+        </tr>
+
+    {% endfor %}
+    </table>
+{% endblock %}

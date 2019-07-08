@@ -20,7 +20,9 @@ class UserRepository extends ServiceEntityRepository
     }
 
 
+
     public function searchUser($criteria)
+
     {
         $qb = $this->createQueryBuilder('u');
 

@@ -82,6 +82,9 @@ class User implements UserInterface
 
     private $phone;
 
+
+
+
     /**
 
      * @ORM\Column(type="string", length=255)
@@ -112,7 +115,14 @@ class User implements UserInterface
 
      * @ORM\Column(type="date", nullable=true)
 
+
+    /**
+     * @ORM\Column(type="string", length=20)
      */
+    private $role = 'ROLE_USER';
+
+
+
 
     private $birthdate;
 
@@ -186,7 +196,6 @@ class User implements UserInterface
 
         // If you store any temporary, sensitive data on the user, clear it here
 
-
         //$this->plainPassword = null;
 
     }
@@ -245,6 +254,9 @@ class User implements UserInterface
 
     }
 
+
+
+
     /**
 
      * Returns the roles granted to the user.
@@ -277,9 +289,7 @@ class User implements UserInterface
 
     {
 
-
-        return ['ROLE_USER'];
-
+        return [$this->role];
 
     }
 
@@ -303,9 +313,7 @@ class User implements UserInterface
 
     {
 
-
         return $this->password;
-
 
     }
 
@@ -372,6 +380,20 @@ class User implements UserInterface
         return $this;
 
     }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+
 
 }
 
