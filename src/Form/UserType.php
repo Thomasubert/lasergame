@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -58,7 +59,15 @@ class UserType extends AbstractType
                     'label' => 'Tel.'
                 ])
 
-            ->add('birthdate')
+            ->add('birthdate',
+                BirthdayType::class,
+                [
+                    'label' => 'Date de naissance du joueur',
+                    'required' => false,
+                    'widget' => 'choice',
+                    'format' => 'dd/MM/yyyy',
+                    'html5' => false
+                ])
 
         ;
     }
