@@ -19,50 +19,35 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-/*    public function search(array  $filters = [])
-    {
 
+
+    public function searchUser($criteria)
+
+    {
         $qb = $this->createQueryBuilder('u');
 
-        $qb->orderBy('u.firstname', 'DESC');
+        //$qb->orderBy('u.lastname', 'DESC');
 
-        if (!empty($filters['user'])){
+        //if (!empty($criteria['user'])) {
             $qb
-                ->andWhere('u.firstname = :user')
-                ->setParameter(':user', $filters['user']);
-        }
+                ->where('u.lastname = :lastname')
+                ->setParameter('lastname', $criteria['lastname']);
 
-        if (!empty($filters('card'))){
-            $qb
-                ->andWhere('u.card = :card')
-                ->setParameter(':card', $filters['card']);
-        }
-
-        $query = $qb->getQuery();
-
-        dump($query->getSQL());
-
-        return $query->getResult();
-    }*/
+        //}
 
 
+        //$query = $qb->getQuery();
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+        //dump($query->getSQL());
+
+        //$qb->orderBy('u.lastname', 'DESC');
+
+        return $qb
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
+
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?User

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recherche avancée</h1>
+
+        {{ form_start(search_form) }}
+
+        {{ form_row(search_form.lastname) }}
+
+        {{ form_end(search_form) }}
+
+
+
+
+    <table class="table">
+
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Carte n°</th>
+            <th width="250px"></th>
+        </tr>
+
+        {% for u in user %}
+            <tr>
+                <td>{{ u.lastname }}</td>
+                <td>{{ u.firstname }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.card }}</td>
+
+                <td>
+                    <a href="{{ path('app_user_edit', {'id': u.id}) }}"
+                       class="btn btn-primary">
+                        Modifier
+                    </a>
+                    <a href="{{ path('app_user_delete', {'id': u.id}) }}"
+                       class="btn btn-danger">
+                        Supprimer
+                    </a>
+                </td>
+                <br>
+            </tr>
+
+
+        {% endfor %}
+
+
+    </table>
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

@@ -12,8 +12,7 @@ class CardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('code_center')
-            ->add('code_card')
+            ->add('codeCard')
             ->add('checksum')
             ->add('status')
             ->add('number_of_games')
@@ -27,3 +26,4 @@ class CardType extends AbstractType
         ]);
     }
 }
+
