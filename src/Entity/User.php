@@ -87,6 +87,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $username;
+
     public function getId(): ?int
     {
         return $this->id;
