@@ -3,11 +3,9 @@
 namespace App\Form;
 
 use App\Entity\User;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -72,46 +70,6 @@ class UserType extends AbstractType
                     'required' => false,
                     'widget' => 'choice',
                     'format' => 'dd/MM/yyyy',
-                    'html5' => false
-                ])
-
-            ->add('streetNumber',
-                IntegerType::class,
-                [
-                    'label' => 'Numéro',
-                    'required' => false,
-                    'html5' => false
-                ])
-
-            ->add('streetName',
-                TextType::class,
-                [
-                    'label' => 'Rue',
-                    'required' => false,
-                    'html5' => false
-                ])
-
-            ->add('zip',
-                TextType::class,
-                [
-                    'label' => 'Code postal',
-                    'required' => false,
-                    'html5' => false
-                ])
-
-            ->add('city',
-                TextType::class,
-                [
-                    'label' => 'ville',
-                    'required' => false,
-                    'html5' => false
-                ])
-
-            ->add('country',
-                TextType::class,
-                [
-                    'label' => 'Pays',
-                    'required' => false,
                     'html5' => false
                 ])
 
