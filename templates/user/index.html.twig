@@ -7,7 +7,7 @@
 
     <a href="{{ path('app_user_edit') }}"
        class="btn btn-outline-primary mb-3">
-        Ajouter un utilisateurs
+        Ajouter un utilisateur
     </a>
 
     <a href="{{ path('search_user') }}"
@@ -21,6 +21,11 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Email</th>
+            <th>Numéro</th>
+            <th>Rue</th>
+            <th>Code postal</th>
+            <th>Ville</th>
+            <th>Pays</th>
             <th width="250px"></th>
         </tr>
         {% for user in users %}
@@ -29,6 +34,11 @@
                 <td>{{ user.lastname }}</td>
                 <td>{{ user.firstname }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.streetNumber }}</td>
+                <td>{{ user.streetName }}</td>
+                <td>{{ user.zip }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.country }}</td>
                 <td>
 
 
