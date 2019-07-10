@@ -69,6 +69,46 @@ class UserType extends AbstractType
                     'html5' => false
                 ])
 
+            ->add('streetNumber',
+                TextType::class,
+                [
+                    'label' => 'Numéro',
+                    'required' => false,
+                    'html5' => false
+                ])
+
+            ->add('streetName',
+                TextType::class,
+                [
+                    'label' => 'Rue',
+                    'required' => false,
+                    'html5' => false
+                ])
+
+            ->add('zip',
+                TextType::class,
+                [
+                    'label' => 'Code postal',
+                    'required' => false,
+                    'html5' => false
+                ])
+
+            ->add('city',
+                TextType::class,
+                [
+                    'label' => 'ville',
+                    'required' => false,
+                    'html5' => false
+                ])
+
+            ->add('country',
+                TextType::class,
+                [
+                    'label' => 'Pays',
+                    'required' => false,
+                    'html5' => false
+                ])
+
         ;
     }
 

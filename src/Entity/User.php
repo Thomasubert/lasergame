@@ -44,11 +44,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $password;
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="users")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $address;
+
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Card", inversedBy="user", cascade={"persist", "remove"})
      */
@@ -61,6 +57,36 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=20)
      */
     private $role = 'ROLE_USER';
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $streetNumber;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $streetName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $zip;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $username;
     public function getId(): ?int
     {
         return $this->id;
@@ -160,15 +186,7 @@ class User implements UserInterface
         $this->password = $password;
         return $this;
     }
-    public function getAddress(): ?Address
-    {
-        return $this->address;
-    }
-    public function setAddress(?Address $address): self
-    {
-        $this->address = $address;
-        return $this;
-    }
+
     public function getCard(): ?Card
     {
         return $this->card;
@@ -194,6 +212,73 @@ class User implements UserInterface
     public function setRole(string $role): self
     {
         $this->role = $role;
+        return $this;
+    }
+
+    public function getStreetNumber(): ?int
+    {
+        return $this->streetNumber;
+    }
+
+    public function setStreetNumber(?int $streetNumber): self
+    {
+        $this->streetNumber = $streetNumber;
+
+        return $this;
+    }
+
+    public function getStreetName(): ?string
+    {
+        return $this->streetName;
+    }
+
+    public function setStreetName(?string $streetName): self
+    {
+        $this->streetName = $streetName;
+
+        return $this;
+    }
+
+    public function getZip(): ?string
+    {
+        return $this->zip;
+    }
+
+    public function setZip(?string $zip): self
+    {
+        $this->zip = $zip;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function setUsername(?string $username): self
+    {
+        $this->username = $username;
+
         return $this;
     }
 }

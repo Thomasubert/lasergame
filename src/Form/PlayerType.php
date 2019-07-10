@@ -69,21 +69,15 @@ class PlayerType extends AbstractType
                     'format' => 'dd/MM/yyyy',
                     'html5' => false
                 ])
-            ->add('address',
-                EntityType::class,
-                [
-                    'class' => Address::class,
-                    'label' => 'Adresse du joueur',
-                    'required' => false
-                ])
-            ->add('card',
-                EntityType::class,
-                [
-                    'class' => Card::class,
-                    'label' => 'Numéro de carte du joueur',
-                    'required' => false
+
+           // ->add('card',
+             //   EntityType::class,
+               // [
+                 //   'class' => Card::class,
+                   // 'label' => 'Numéro de carte du joueur',
+                   // 'required' => false
                     
-                ])
+               // ])
         ;
     }
 
