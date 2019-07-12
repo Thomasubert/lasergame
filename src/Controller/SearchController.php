@@ -19,12 +19,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class SearchController extends AbstractController
 {
+
     /**
      * @param Request $request
+     * @param UserRepository $userRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/user", name="search_user")
      */
-
-    public function searchUser(Request $request, UserRepository $userRepository )
+    public function searchUser(Request $request, UserRepository $userRepository)
     {
         $searchUserForm = $this->createForm(SearchUserType::class);
 
@@ -51,7 +53,16 @@ class SearchController extends AbstractController
             ]);
     }
 
-    public function searchCard(Request $request,CardRepository $cardRepository )
+
+    /**
+     * @param Request $request
+     * @param CardRepository $cardRepository
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/card", name="search_card")
+     *
+     */
+
+    public function searchCard(Request $request, CardRepository $cardRepository)
     {
         $searchCardForm = $this->createForm(SearchCardType::class);
 
@@ -61,7 +72,7 @@ class SearchController extends AbstractController
 
             $card = $cardRepository->searchCard($criteria);
 
-            return $this->render('search/user.html.twig',
+            return $this->render('search/card.html.twig',
                 [
                     'card' => $card,
                     'search_form' => $searchCardForm->createView(),
@@ -69,12 +80,12 @@ class SearchController extends AbstractController
 
         }
 
-        $user = $searchUserForm->getData();
+        $card = $searchCardForm->getData();
 
-        return $this->render('search/user.html.twig',
+        return $this->render('search/card.html.twig',
             [
-                'user' => $user,
-                'search_form' => $searchUserForm->createView(),
+                'card' => $card,
+                'search_form' => $searchCardForm->createView(),
             ]);
     }
 }

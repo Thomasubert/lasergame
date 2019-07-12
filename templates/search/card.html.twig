@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Recherche avancée</h1>
+
+    {{ form_start(search_form) }}
+
+    {{ form_row(search_form.codeCard) }}
+
+    {{ form_end(search_form) }}
+
+    <table class="table">
+
+        <tr>
+            <th>Carte n°</th>
+            <th width="250px"></th>
+        </tr>
+
+        {% for c in card %}
+            <tr>
+                <td>{{ c.codeCard }}</td>
+
+                <td>
+                    <a href="{{ path('app_card_edit', {'id': c.id}) }}"
+                       class="btn btn-primary">
+                        Modifier
+                    </a>
+                    <a href="{{ path('app_card_delete', {'id': c.id}) }}"
+                       class="btn btn-danger">
+                        Supprimer
+                    </a>
+                </td>
+                <br>
+            </tr>
+
+
+        {% endfor %}
+
+
+    </table>
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+
+
+
