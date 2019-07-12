@@ -22,7 +22,6 @@
 <body>
 
 
-
 <div class="container" id="nav-container">
 
 
@@ -91,6 +90,8 @@
                 </div>
             </div>
         </div>
+
+        {% if is_granted('ROLE_ADMIN')  %}
         <div id="navbar-menu-id" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item"href="{{ path('app_card_index') }}">
@@ -101,6 +102,7 @@
                     Joueurs
                 </a>
             </div>
+            {% endif %}
 
 
 
