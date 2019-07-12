@@ -5,11 +5,14 @@ namespace App\Form;
 use App\Entity\Address;
 use App\Entity\Card;
 use App\Entity\User;
+use phpDocumentor\Reflection\Types\Integer;
+use function PHPSTORM_META\type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -42,24 +45,7 @@ class PlayerType extends AbstractType
                 [
                     'label' => 'Numéro du téléphone du joueur'
                 ])
-            ->add('password',
-                // 2 champs qui doivent avoir la même valeur
-                RepeatedType::class,
-                [
-                    // ...de type password
-                    'type' => PasswordType::class,
-                    // options du 1er champ
-                    'first_options' => [
-                        'label' => 'Mot de passe'
-                    ],
-                    // options du 2nd champ
-                    'second_options' => [
-                        'label' => 'Confirmation du mot de passe'
-                    ],
-                    // message si les 2 champs n'ont pas la même valeur
-                    'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
-                ]
-            )
+
             ->add('birthdate',
                 BirthdayType::class,
                 [
@@ -69,20 +55,51 @@ class PlayerType extends AbstractType
                     'format' => 'dd/MM/yyyy',
                     'html5' => false
                 ])
-            ->add('address',
-                EntityType::class,
+
+           // ->add('card',
+             //   EntityType::class,
+               // [
+                 //   'class' => Card::class,
+                   // 'label' => 'Numéro de carte du joueur',
+                   // 'required' => false
+                    
+               //  ])
+
+           ->add('streetNumber',
+               IntegerType::class,
+               [
+
+                   'label' => 'Numéro',
+                   'required' => false
+
+               ])
+
+            ->add('streetName',
+               TextType::class,
+               [
+                   'label' => 'Rue',
+                   'required' => false
+               ])
+
+            ->add('zip',
+                TextType::class,
                 [
-                    'class' => Address::class,
-                    'label' => 'Adresse du joueur',
+                    'label' => 'Code postal',
                     'required' => false
                 ])
-            ->add('card',
-                EntityType::class,
+
+            ->add('city',
+                TextType::class,
                 [
-                    'class' => Card::class,
-                    'label' => 'Numéro de carte du joueur',
+                    'label' => 'Ville',
                     'required' => false
-                    
+                ])
+
+            ->add('country',
+                TextType::class,
+                [
+                    'label' => 'Pays',
+                    'required' => false
                 ])
         ;
     }

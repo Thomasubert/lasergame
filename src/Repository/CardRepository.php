@@ -19,7 +19,10 @@ class CardRepository extends ServiceEntityRepository
         parent::__construct($registry, Card::class);
     }
 
-
+    /**
+     * @param $criteria
+     * @return mixed
+     */
     public function searchCard($criteria)
     {
         $qb = $this->createQueryBuilder('u');
@@ -28,8 +31,8 @@ class CardRepository extends ServiceEntityRepository
 
         //if (!empty($criteria['user'])) {
         $qb
-            ->where('u.lastname = :lastname')
-            ->setParameter('lastname', $criteria['lastname']);
+            ->where('u.codeCard = :codeCard')
+            ->setParameter('codeCard', $criteria['codeCard']);
 
         //}
 

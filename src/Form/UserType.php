@@ -15,6 +15,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -68,6 +72,43 @@ class UserType extends AbstractType
                     'format' => 'dd/MM/yyyy',
                     'html5' => false
                 ])
+
+
+            ->add('streetNumber',
+                TextType::class,
+                [
+                    'label' => 'Numéro',
+                    'required' => false
+                ])
+
+            ->add('streetName',
+                TextType::class,
+                [
+                    'label' => 'Rue',
+                    'required' => false
+                ])
+
+            ->add('zip',
+                TextType::class,
+                [
+                    'label' => 'Code postal',
+                    'required' => false
+                ])
+
+            ->add('city',
+                TextType::class,
+                [
+                    'label' => 'Ville',
+                    'required' => false
+                ])
+
+            ->add('country',
+                TextType::class,
+                [
+                    'label' => 'Pays',
+                    'required' => false
+                ])
+
 
         ;
     }
