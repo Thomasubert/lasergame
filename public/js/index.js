@@ -16,5 +16,5 @@ $('#navbar-burger-id').click(function () {
     }else {
         $('#navbar-burger-id').addClass('is-active');
         $('#navbar-menu-id').addClass('is-active');
-    }
+}
 });

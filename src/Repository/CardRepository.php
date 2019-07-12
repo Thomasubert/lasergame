@@ -32,7 +32,9 @@ class CardRepository extends ServiceEntityRepository
         //if (!empty($criteria['user'])) {
         $qb
             ->where('u.codeCard = :codeCard')
-            ->setParameter('codeCard', $criteria['codeCard']);
+            ->setParameter('codeCard', $criteria['codeCard'])
+            ->where('u.checksum = :checksum')
+            ->setParameter('checksum', $criteria['checksum']);
 
         //}
 
