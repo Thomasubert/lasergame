@@ -69,12 +69,12 @@ class SearchController extends AbstractController
 
         }
 
-        $user = $searchUserForm->getData();
+        $user = $searchCardForm->getData();
 
         return $this->render('search/user.html.twig',
             [
                 'user' => $user,
-                'search_form' => $searchUserForm->createView(),
+                'search_form' => $searchCardForm->createView(),
             ]);
     }
 }
