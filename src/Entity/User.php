@@ -53,6 +53,7 @@ class User implements UserInterface
      * @ORM\Column(type="date", nullable=true)
      */
     private $birthdate;
+
     /**
      * @ORM\Column(type="string", length=20)
      */
@@ -73,10 +74,13 @@ class User implements UserInterface
      */
     private $zip;
 
+
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $city;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

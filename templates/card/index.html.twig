@@ -5,11 +5,11 @@
 {% block body %}
     <h1>Cartes</h1>
 
-    <a href="{{ path('app_card_edit') }}"
+    <a href="{{ path('app_admin_card_edit') }}"
        class="btn btn-outline-primary mb-3">
         Ajouter une carte
     </a> <br/>
-    <a href="{{ path('app_card_edit') }}"
+    <a href="{{ path('app_admin_card_index') }}"
        class="btn btn-outline-primary mb-3">
         Lister les cartes
     </a>
@@ -31,11 +31,11 @@
                 <td>{{ card.getNumberOfGames() }}</td>
 
                 <td>
-                    <a href="{{ path('app_card_edit', {'id': card.id}) }}"
+                    <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}"
                        class="btn btn-primary">
                         Modifier
                     </a>
-                    <a href="{{ path('app_card_delete', {'id': card.id}) }}"
+                    <a href="{{ path('app_admin_card_delete', {'id': card.id}) }}"
                        class="btn btn-danger">
                         Supprimer
                     </a>

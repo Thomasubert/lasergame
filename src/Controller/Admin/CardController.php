@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Service\CardGenerator;
 use App\Entity\Card;
@@ -18,8 +18,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class CardController
- * @package App\Controller
- * @Route("card")
+ * @package App\Controller\Admin
+ * @Route("/card")
  */
 class CardController extends AbstractController
 {
@@ -107,7 +107,7 @@ class CardController extends AbstractController
         );
 
         return $this->redirectToRoute(
-            'app_card_index'
+            'app_admin_card_index'
         );
 
     }
