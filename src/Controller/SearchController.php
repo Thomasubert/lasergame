@@ -58,7 +58,9 @@ class SearchController extends AbstractController
      * @param Request $request
      * @param CardRepository $cardRepository
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/searchcard")
+
+     * @Route("/card")
+
      *
      */
 
