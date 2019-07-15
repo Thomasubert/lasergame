@@ -10,17 +10,28 @@
 
     {{ form_end(search_form) }}
 
+
     <table class="table">
 
         <tr>
             <th>Carte n°</th>
+            <th>État</th>
+            <th>Nom</th>
+            <th>Prénom</th>
             <th width="250px"></th>
         </tr>
 
         {% for c in card %}
             <tr>
-                <td>{{ c.codeCard }}</td>
-
+                <td>{{ card[0].getCodeCard() }}</td>
+                <td>{{ card[0].getStatus()}} </td>
+                {% if rowuser is defined %}
+                <td> {{  rowuser.getLastname()}} </td>
+                <td> {{  rowuser.getFirstname()}} </td>
+                {% else %}
+                    <td> - - -  </td>
+                    <td> - - -</td>
+                {% endif %}
                 <td>
                     <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
                        class="btn btn-primary">
@@ -33,12 +44,10 @@
                 </td>
                 <br>
             </tr>
-
-
         {% endfor %}
-
-
     </table>
+
+{#{{dump(rowuser)}}#}
 
 {% endblock %}
 

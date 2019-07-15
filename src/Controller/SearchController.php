@@ -57,12 +57,13 @@ class SearchController extends AbstractController
     /**
      * @param Request $request
      * @param CardRepository $cardRepository
+     * @param UserRepository $userRepository
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/searchcard")
      *
      */
 
-    public function searchcard(Request $request, CardRepository $cardRepository)
+    public function searchcard(Request $request, CardRepository $cardRepository,UserRepository $userRepository)
     {
         $searchCardForm = $this->createForm(SearchCardType::class);
 
@@ -72,13 +73,55 @@ class SearchController extends AbstractController
 
             $card = $cardRepository->searchCard($criteria);
 
-            return $this->render('search/card.html.twig',
-                [
-                    'card' => $card,
-                    'search_form' => $searchCardForm->createView(),
-                ]);
+            $users=$userRepository->findAll();
+
+           // dd($card[0]->getStatus());
+
+            if($card[0]->getStatus()=="libre")
+            {
+                //$rowuser=" ";
+
+                $stateCard="La carte non attribué";
+                return $this->render('search/card.html.twig',
+                    [
+                        'card' => $card,
+                        'cardstate'=>$stateCard,
+                        //'rowuser'=>$rowuser,
+                        'search_form' => $searchCardForm->createView(),
+                    ]);
+            }
+            elseif ($card[0]->getStatus()=="attribué")
+            {
+                $stateCard="La carte est attribuée";
+                $rowuser=" ";
+                foreach ($users as $key => $value)
+                {
+
+                    if($value->getCard()->getCodeCard()==$card[0]->getCodeCard())
+                    {
+                        $rowuser=$value;
+                        //dd($rowuser);
+                    }
+
+                }
+
+                return $this->render('search/card.html.twig',
+                    [
+                        'card' => $card,
+                        'rowuser'=>$rowuser,
+                        'cardstate'=>$stateCard,
+                        'search_form' => $searchCardForm->createView(),
+                    ]);
+
+
+            }
+
+
+
+
 
         }
+
 
 
         $user = $searchCardForm->getData();
