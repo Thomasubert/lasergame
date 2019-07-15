@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\User;
+use mysql_xdevapi\BaseResult;
+use function Sodium\library_version_major;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -25,17 +27,25 @@ class UserType extends AbstractType
             ->add('lastname',
                 TextType::class,
                 [
-                    'label' => 'Lastname'
+                    'label' => false,
+
+                    'attr' => ['placeholder' => 'Nom',
+                        'class' => 'input']
+
                 ])
             ->add('firstname',
                 TextType::class,
                 [
-                    'label' => 'Firstname'
+                    'label' => false,
+                    'attr' => ['placeholder' => 'Prénom',
+                        'class' => 'input']
                 ])
             ->add('email',
                 EmailType::class,
                 [
-                    'label' => 'Email'
+                    'label' => false,
+                    'attr' => ['placeholder' => 'Mail',
+                        'class' => 'input']
                 ])
          //   ->add('roles')
             ->add('password',
@@ -46,11 +56,16 @@ class UserType extends AbstractType
                  'type' => PasswordType::class,
                  // options du 1er champ
                  'first_options' => [
-                     'label' => 'Mot de passe'
+                     'label' => false,
+                     'attr' => ['placeholder' => 'Mot de passe',
+                         'class' => 'input']
+
                  ],
                  // options du 2nd champ
                  'second_options' => [
-                     'label' => 'Confirmation du mot de passe'
+                     'label' => false,
+                     'attr' => ['placeholder' => 'Confirmation du mot de passe',
+                         'class' => 'input']
                  ],
                  // message si les 2 champs n'ont pas la même valeur
                  'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
@@ -60,7 +75,9 @@ class UserType extends AbstractType
             ->add('phone',
                 TelType::class,
                 [
-                    'label' => 'Tel.'
+                    'label' => false,
+                    'attr' => ['placeholder' => 'Téléphone',
+                        'class' => 'input']
                 ])
 
             ->add('birthdate',
@@ -77,36 +94,46 @@ class UserType extends AbstractType
             ->add('streetNumber',
                 TextType::class,
                 [
-                    'label' => 'Numéro',
-                    'required' => false
+                    'label' => false,
+                    'required' => false,
+                    'attr' => ['placeholder' => 'Numéro',
+                        'class' => 'input']
                 ])
 
             ->add('streetName',
                 TextType::class,
                 [
-                    'label' => 'Rue',
-                    'required' => false
+                    'label' => false,
+                    'required' => false,
+                    'attr' => ['placeholder' => 'Rue',
+                        'class' => 'input']
                 ])
 
             ->add('zip',
                 TextType::class,
                 [
-                    'label' => 'Code postal',
-                    'required' => false
+                    'label' => false,
+                    'required' => false,
+                    'attr' => ['placeholder' => 'Code postal',
+                        'class' => 'input']
                 ])
 
             ->add('city',
                 TextType::class,
                 [
-                    'label' => 'Ville',
-                    'required' => false
+                    'label' => false,
+                    'required' => false,
+                    'attr' => ['placeholder' => 'Ville',
+                        'class' => 'input']
                 ])
 
             ->add('country',
                 TextType::class,
                 [
-                    'label' => 'Pays',
-                    'required' => false
+                    'label' => false,
+                    'required' => false,
+                    'attr' => ['placeholder' => 'Pays',
+                        'class' => 'input']
                 ])
 
 
