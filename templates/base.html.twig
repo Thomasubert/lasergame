@@ -22,7 +22,6 @@
 <body>
 
 
-
 <div class="container" id="nav-container">
 
 
@@ -91,17 +90,18 @@
                 </div>
             </div>  
         </div>
+
+
         {% if is_granted('ROLE_ADMIN')  %}
+        <div class="navbar-start">
             <div class="navbar-start">
-                <a class="navbar-item"href="{{ path('app_admin_card_index') }}">
-                    <strong> Gestion Cartes Fidélité</strong>
+                <a class="navbar-item"href="{{ path('app_card_index') }}">
+                    Gestion des cartes et des joueurs
                 </a>
 
-                {#<a class="navbar-item">
-                    <strong>  User </strong>
-                </a>#}
             </div>
-       
+            {% endif %}
+
 
         {% endif %}
 
