@@ -75,11 +75,18 @@ class SearchController extends AbstractController
 
             $card = $cardRepository->searchCard($criteria);
 
-            $users=$userRepository->findAll();
 
-           // dd($card[0]->getStatus());
 
-            if($card[0]->getStatus()=="libre")
+            if(empty($card))
+            {
+                //dd($card);
+                return $this->render('search/card.html.twig',
+                    [
+                        'card' => $card,
+                        'search_form' => $searchCardForm->createView(),
+                    ]);
+            }
+            elseif($card[0]->getStatus()=="libre")
             {
                 //$rowuser=" ";
 
@@ -88,30 +95,18 @@ class SearchController extends AbstractController
                     [
                         'card' => $card,
                         'cardstate'=>$stateCard,
-                        //'rowuser'=>$rowuser,
                         'search_form' => $searchCardForm->createView(),
                     ]);
             }
             elseif ($card[0]->getStatus()=="attribué")
             {
-                $stateCard="La carte est attribuée";
-                $rowuser=" ";
-                foreach ($users as $key => $value)
-                {
 
-                    if($value->getCard()->getCodeCard()==$card[0]->getCodeCard())
-                    {
-                        $rowuser=$value;
-                        //dd($rowuser);
-                    }
-
-                }
+                //dd($card[0]->getUser());
 
                 return $this->render('search/card.html.twig',
                     [
                         'card' => $card,
-                        'rowuser'=>$rowuser,
-                        'cardstate'=>$stateCard,
+                        'rowuser'=>$card[0]->getUser(),
                         'search_form' => $searchCardForm->createView(),
                     ]);
 

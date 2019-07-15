@@ -46,6 +46,7 @@
             <th width="250px"></th>
         </tr>
         {% for c in card %}
+
             <tr>
                 <td>{{ card[0].getCodeCard() }}</td>
                 <td>{{ card[0].getStatus()}} </td>
@@ -57,17 +58,18 @@
                     <td> - - -</td>
                 {% endif %}
                 <td>
-                    <a href="{{ path('app_admin_card_edit', {'id': u.id}) }}"
+                    <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
                        class="btn btn-primary">
                         Modifier
                     </a>
-                    <a href="{{ path('app_admin_card_delete', {'id': u.id}) }}"
+                    <a href="{{ path('app_admin_card_delete', {'id': c.id}) }}"
                        class="btn btn-danger">
                         Supprimer
                     </a>
                 </td>
                 <br>
             </tr>
+
         {% endfor %}
     </table>
 
