@@ -53,7 +53,7 @@
            LASER GAME
         </a>
 
-        <a id="navbar-burger-id" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" aria-controls="dropdown-menu">
+        <a id="navbar-burger-id" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu-id" aria-controls="dropdown-menu">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -89,10 +89,9 @@
                     </a>
 
                 </div>
-            </div>
+            </div>  
         </div>
         {% if is_granted('ROLE_ADMIN')  %}
-        <div id="navbar-menu-id" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item"href="{{ path('app_admin_card_index') }}">
                     <strong> Gestion Cartes Fidélité</strong>
@@ -102,7 +101,7 @@
                     <strong>  User </strong>
                 </a>#}
             </div>
-        </div>
+       
 
         {% endif %}
 
@@ -140,6 +139,7 @@
 
 
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    Bonjour  {{ app.user }}   
                     <span class="icon is-medium">
                         <a href="{{ path('app_connexion_logout') }}" title="Déconnexion">
                             <i class="fas fa-sign-out-alt"></i>
@@ -180,6 +180,17 @@
     <script src="{{ asset('lib/bootstrap/bootstrap.min.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script>
+            (function() {
+            var burger=document.querySelector('.burger');
+            var nav=document.querySelector('#'+burger.dataset.target);
+
+            burger.addEventListener('click', function(){
+             burger.classList.toggle('is-active');
+             nav.classList.toggle('is-active');
+             });
+            })();
+            </script>
 
 {% endblock %}
 
