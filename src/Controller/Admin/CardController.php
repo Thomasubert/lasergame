@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class CardController
  * @package App\Controller\Admin
- * @Route("/card")
+ * @Route("/")
  */
 class CardController extends AbstractController
 {
@@ -29,7 +29,7 @@ class CardController extends AbstractController
      * @param EntityManagerInterface $em
      * @param CardRepository $cardRepository
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/")
+     * @Route("card")
      */
     public function index(Request $request, EntityManagerInterface $em, CardRepository $cardRepository)
     {

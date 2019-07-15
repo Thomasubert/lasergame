@@ -24,7 +24,7 @@ class SearchController extends AbstractController
      * @param Request $request
      * @param UserRepository $userRepository
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/searchuser")
+     * @Route("/user")
      */
     public function searchUser(Request $request, UserRepository $userRepository)
     {
@@ -64,7 +64,7 @@ class SearchController extends AbstractController
      *
      */
 
-    public function searchcard(Request $request, CardRepository $cardRepository)
+    public function searchCard(Request $request, CardRepository $cardRepository)
     {
         $searchCardForm = $this->createForm(SearchCardType::class);
 
