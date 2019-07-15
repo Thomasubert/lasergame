@@ -9,12 +9,43 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Here is Contact Twig {{ controller_name }}! ✅</h1>
+   <p>Retrouvez-nous au 21 avenue Gustave Eiffel, 21000 Dijon!!!!</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/lasergame/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/lasergame/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
 </div>
+
+   <div class="example-wrapper" style="height:360px; width:360px">
+      <div id="macarte" class="map-blur m-0" style="height: 360px; width: 360px"></div>
+   </div>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+           crossorigin=""></script>
+   <script>
+      if (document.getElementById('macarte') !== null) {
+         var coords = null;
+         /*Affichage carte*/
+         var carte = L.map('macarte').setView([47.316667, 5.016667], 12);
+
+         L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+         }).addTo(carte);
+
+      }
+
+      function laserPosition(){
+
+         var marker = L.marker([47.314935, 5.023328]);
+         marker.addTo(carte);
+      }
+      laserPosition();
+
+
+
+
+   </script>
 {% endblock %}
