@@ -8,6 +8,12 @@
     </style>
 
 
+    <div class="example-wrapper">
+
+    <h1>Recherche avancée</h1>
+
+
+
 
     {% if is_granted('ROLE_ADMIN')  %}
 
@@ -18,6 +24,21 @@
         {{ form_start(search_form) }}
 
         {{ form_row(search_form.codeCard) }}
+
+
+
+
+
+    {% if is_granted('ROLE_ADMIN')  %}
+
+    <div class="example-wrapper">
+
+        <h1>Rechercher un joueur</h1>
+
+        {{ form_start(search_form) }}
+
+        {{ form_row(search_form.codeCard) }}
+
 
         <div class="control">
             <button class="button is-primary" type="submit">
@@ -31,8 +52,24 @@
         <table class="table">
 
             <tr>
+
+                <td>{{ c.codeCard }}</td>
+
+                <td>
+                    <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
+                       class="btn btn-primary">
+                        Modifier
+                    </a>
+                    <a href="{{ path('app_admin_card_delete', {'id': c.id}) }}"
+                       class="btn btn-danger">
+                        Supprimer
+                    </a>
+                </td>
+                <br>
+
                 <th>Carte n°</th>
                 <th width="250px"></th>
+
             </tr>
 
             {% for c in card %}
@@ -40,11 +77,11 @@
                     <td>{{ c.codeCard }}</td>
 
                     <td>
-                        <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
+                        <a href="{{ path('app_card_edit', {'id': c.id}) }}"
                            class="btn btn-primary">
                             Modifier
                         </a>
-                        <a href="{{ path('app_admin_card_delete', {'id': c.id}) }}"
+                        <a href="{{ path('app_card_delete', {'id': c.id}) }}"
                            class="btn btn-danger">
                             Supprimer
                         </a>
@@ -63,6 +100,10 @@
 
     {% endif %}
 
+
+
+    </table>
+    </div>
 
 
 {% endblock %}
