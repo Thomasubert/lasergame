@@ -90,6 +90,7 @@ class UserType extends AbstractType
                     'html5' => false
                 ])
 
+
             ->add('streetNumber',
                 TextType::class,
                 [
@@ -134,6 +135,7 @@ class UserType extends AbstractType
                     'attr' => ['placeholder' => 'Pays',
                         'class' => 'input']
                 ])
+
 
         ;
     }

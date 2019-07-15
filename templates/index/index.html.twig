@@ -4,4 +4,33 @@
 
 {% block body %}
 
+{% if is_granted('ROLE_USER')  %}
+<table class="table">
+        <tr>
+            <th>score</th>
+            <th>victory</th>
+            <th>date</th>
+            <th width="250px"></th>
+        </tr>
+            <tr>
+                <td> ------</td>
+                <td> ------</td>
+                <td> ------</td>
+                <td>
+    </table><br/>
+
+                    <a href="{{ path('requestcard') }}"  
+                       class="button is-info">
+                         Demander une carte !
+                    </a>
+                    <a href="{{ path('requestcardactive') }}"
+                       class="button is-danger">
+                        Activer la carte !
+                    </a>
+                </td>
+
+            </tr>
+
+ {% endif %}
+
 {% endblock %}

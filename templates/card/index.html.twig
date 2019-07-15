@@ -13,8 +13,6 @@
 
     <h1>Cartes</h1>
 
-
-
     <table class="table">
         <tr>
             <th>Code Centre</th>
@@ -33,11 +31,11 @@
                 <td>{{ card.getNumberOfGames() }}</td>
 
                 <td>
-                    <a href="{{ path('app_card_edit', {'id': card.id}) }}"
+                    <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}"
                        class="btn btn-primary">
                         Modifier
                     </a>
-                    <a href="{{ path('app_card_delete', {'id': card.id}) }}"
+                    <a href="{{ path('app_admin_card_delete', {'id': card.id}) }}"
                        class="btn btn-danger">
                         Supprimer
                     </a>
