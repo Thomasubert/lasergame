@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class SearchController
  * @package App\Controller
- * @Route("search")
+ * @Route("/search")
  */
 class SearchController extends AbstractController
 {
@@ -24,7 +24,7 @@ class SearchController extends AbstractController
      * @param Request $request
      * @param UserRepository $userRepository
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/user", name="search_user")
+     * @Route("/searchuser")
      */
     public function searchUser(Request $request, UserRepository $userRepository)
     {
@@ -58,11 +58,11 @@ class SearchController extends AbstractController
      * @param Request $request
      * @param CardRepository $cardRepository
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/card", name="search_card")
+     * @Route("/searchcard")
      *
      */
 
-    public function searchCard(Request $request, CardRepository $cardRepository)
+    public function searchcard(Request $request, CardRepository $cardRepository)
     {
         $searchCardForm = $this->createForm(SearchCardType::class);
 
