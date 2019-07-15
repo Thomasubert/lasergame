@@ -28,32 +28,46 @@ class PlayerType extends AbstractType
             ->add('email',
                 EmailType::class,
                 [
-                    'label' => 'Email du joueur'
+                    'label' => false,
+
+                        'attr' => ['placeholder' => 'Mail',
+                            'class' => 'input']
+
+
                 ])
             ->add('lastname',
                 TextType::class,
                 [
-                    'label' => 'Nom du joueur'
+                    'label' => false,
+                    'attr' => ['placeholder' => 'Nom',
+                        'class' => 'input']
                 ])
             ->add('firstname',
                 TextType::class,
                 [
-                    'label' => 'Prénom du joueur'
+                    'label' => false,
+                    'attr' => ['placeholder' => 'Prénom',
+                        'class' => 'input']
                 ])
             ->add('phone',
                 TelType::class,
                 [
-                    'label' => 'Numéro du téléphone du joueur'
+                    'label' => false,
+                    'attr' => ['placeholder' => 'Tel',
+                                'class' => 'input']
                 ])
 
             ->add('birthdate',
                 BirthdayType::class,
                 [
-                    'label' => 'Date de naissance du joueur',
+                    'label' => false,
                     'required' => false,
                     'widget' => 'choice',
                     'format' => 'dd/MM/yyyy',
-                    'html5' => false
+                    'html5' => false,
+                    'attr' => [
+                        'class' => 'input_format'
+                    ]
                 ])
 
            // ->add('card',
@@ -69,37 +83,47 @@ class PlayerType extends AbstractType
                IntegerType::class,
                [
 
-                   'label' => 'Numéro',
-                   'required' => false
+                   'label' => false,
+                   'required' => false,
+                   'attr' => ['placeholder' => 'Numéro',
+                       'class' => 'input']
 
                ])
 
             ->add('streetName',
                TextType::class,
                [
-                   'label' => 'Rue',
-                   'required' => false
+                   'label' => false,
+                   'required' => false,
+                   'attr' => ['placeholder' => 'Rue',
+                       'class' => 'input']
                ])
 
             ->add('zip',
                 TextType::class,
                 [
-                    'label' => 'Code postal',
-                    'required' => false
+                    'label' => false,
+                    'required' => false,
+                    'attr' => ['placeholder' => 'Code postal',
+                        'class' => 'input']
                 ])
 
             ->add('city',
                 TextType::class,
                 [
-                    'label' => 'Ville',
-                    'required' => false
+                    'label' => false,
+                    'required' => false,
+                    'attr' => ['placeholder' => 'Ville',
+                        'class' => 'input']
                 ])
 
             ->add('country',
                 TextType::class,
                 [
-                    'label' => 'Pays',
-                    'required' => false
+                    'label' => false,
+                    'required' => false,
+                    'attr' => ['placeholder' => 'Pays',
+                        'class' => 'input']
                 ])
         ;
     }
