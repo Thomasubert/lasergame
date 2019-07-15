@@ -1,2 +1,19 @@
 framework:
-    workflows: ~
+    workflows:
+        fidility_card:
+            type: 'state_machine'
+            marking_store:
+                type: 'single_state'
+                arguments:
+                    - 'state'
+            supports:
+                - App\Entity\Card
+            places:
+                - opened
+                - free
+                - affected
+                - active
+            transitions:
+                submit:
+
+

@@ -51,6 +51,11 @@ class Card
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $state;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -132,6 +137,18 @@ class Card
         if ($newCard !== $user->getCard()) {
             $user->setCard($newCard);
         }
+
+        return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }
