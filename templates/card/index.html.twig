@@ -39,12 +39,18 @@
                 <td>{{ card.getChecksum() }}</td>
                 <td>{{ card.getStatus() }}</td>
                 <td>{{ card.getNumberOfGames() }}</td>
-
                 <td>
+                    {% if card.getStatus()=="attribué" %}
                     <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}"
                        class="btn btn-primary">
-                        Modifier
-                    </a>
+                        Activer
+                     </a>
+                    {% else %}
+                        <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}"
+                           class="btn btn-primary">
+                            Attribué
+                        </a>
+                    {% endif %}
                     <a href="{{ path('app_admin_card_delete', {'id': card.id}) }}"
                        class="btn btn-danger">
                         Supprimer
