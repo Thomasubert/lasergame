@@ -46,7 +46,9 @@
             <th width="250px"></th>
         </tr>
         {% for c in card %}
-
+            {% if card  is empty %}   
+                <td>La carte n'existe pas</td>
+        {% else %}
             <tr>
                 <td>{{ card[0].getCodeCard() }}</td>
                 <td>{{ card[0].getStatus()}} </td>
@@ -69,7 +71,7 @@
                 </td>
                 <br>
             </tr>
-
+        {% endif %}
         {% endfor %}
     </table>
 
