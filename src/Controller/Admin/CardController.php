@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Service\CardGenerator;
 use App\Entity\Card;
+use App\Entity\User;
 use App\Form\CardType;
 use App\Repository\CardRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,12 +32,14 @@ class CardController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/")
      */
-    public function index(Request $request, EntityManagerInterface $em, CardRepository $cardRepository)
+    public function index(Request $request, EntityManagerInterface $em, CardRepository $cardRepository,CardRepository $userRepository)
     {
         $cards = $cardRepository->findAll();
+        $users = $userRepository->findAll();
 
         return $this->render('card/index.html.twig', [
             'cards' => $cards,
+            'users' => $users,
         ]);
     }
 
