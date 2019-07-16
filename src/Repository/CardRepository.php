@@ -72,7 +72,7 @@ class CardRepository extends ServiceEntityRepository
     }
     */
 
-    /*
+
     public function findOneBySomeField($value): ?Card
     {
         return $this->createQueryBuilder('c')
@@ -82,5 +82,5 @@ class CardRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }
