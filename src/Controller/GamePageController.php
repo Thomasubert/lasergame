@@ -7,11 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class gamePageController
+ * Class GamePageController
  * @package App\Controller
  * @Route("gamePage")
  */
-class gamePageController extends AbstractController
+class GamePageController extends AbstractController
 {
     /**
      * @Route("/")
@@ -19,7 +19,7 @@ class gamePageController extends AbstractController
     public function index()
     {
         return $this->render('game.html.twig', [
-            'controller_name' => 'gamePAgeController',
+            'controller_name' => 'GamePageController',
         ]);
     }
 }
