@@ -59,12 +59,20 @@
                                    class="btn btn-primary">
                                     Activer
                                 </a>
+
+                                {% elseif card.getStatus()=="active" %}
+                                    <a href="#"
+                                       class="btn btn-primary">
+                                        Succès
+                                    </a>
                             {% else %}
                                 <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}"
                                    class="btn btn-primary">
                                     Attribué
                                 </a>
                             {% endif %}
+                        </td>
+                        <td>
                             <a href="{{ path('app_admin_card_delete', {'id': card.id}) }}"
                                class="btn btn-danger">
                                 Supprimer

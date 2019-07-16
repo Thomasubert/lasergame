@@ -28,7 +28,9 @@ class RequestcardactiveController extends AbstractController
     public function index(AuthenticationUtils $authenticationUtils,EntityManagerInterface $em,CardRepository $cardRepository, $id)
     {
           $result = $em->find(Card::class, $id);
-          dd($result->getStatus("active"));
+          //dd($result->getId());
+          $result->setStatus("active");
+          $em->persist($result);
           $em->flush();
           $this->addFlash('success', 'La carte est activée');
 
