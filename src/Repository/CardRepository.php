@@ -48,6 +48,13 @@ class CardRepository extends ServiceEntityRepository
             ->getResult();
 
     }
+
+    public function findFreeCard() {
+        $qb = $this->createQueryBuilder('card')
+            ->andWhere('card.status = :customerCode')
+            ->setParameter(':customerCode', 'libre');
+        return (boolean)$qb->getQuery()->getResult();
+    }
     // /**
     //  * @return Card[] Returns an array of Card objects
     //  */
