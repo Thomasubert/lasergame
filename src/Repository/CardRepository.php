@@ -50,6 +50,21 @@ class CardRepository extends ServiceEntityRepository
             ->getResult();
 
     }
+
+    /**
+     * Récupérer toutes les cartes par état
+     * @param string $state
+     * @return mixed
+     */
+    public function findCardByState(string $state)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('a.state LIKE :state')
+            ->setParameter('state', "%$state%")
+            ->orderBy('c.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Card[] Returns an array of Card objects
     //  */

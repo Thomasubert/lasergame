@@ -112,4 +112,72 @@ class CardController extends AbstractController
 
     }
 
+    /**
+     * @Route("/create", name="cards_created")
+     */
+    public function createCard()
+    {
+        $cards = $this->getDoctrine()
+            ->getRepository(Card::class)
+            ->findCardByState('create');
+
+        return $this->render('card/index.html.twig', [
+            'cards' => $cards
+        ]);
+    }
+    /**
+     * @Route("/free", name="cards_free")
+     */
+    public function freeCard()
+    {
+        $cards = $this->getDoctrine()
+            ->getRepository(Card::class)
+            ->findCardByState('free');
+
+        return $this->render('card/index.html.twig', [
+            'cards' => $cards
+        ]);
+    }
+
+    /**
+     * @Route("/affected", name="cards_affected")
+     */
+    public function affectedCard()
+    {
+        $cards = $this->getDoctrine()
+            ->getRepository(Card::class)
+            ->findCardByState('affected');
+
+        return $this->render('card/index.html.twig', [
+            'cards' => $cards
+        ]);
+    }
+
+    /**
+     * @Route("/pre_active", name="cards_pre_active")
+     */
+    public function preActiveCard()
+    {
+        $cards = $this->getDoctrine()
+            ->getRepository(Card::class)
+            ->findCardByState('pre_active');
+
+        return $this->render('card/index.html.twig', [
+            'cards' => $cards
+        ]);
+    }
+
+    /**
+     * @Route("/active", name="cards_active")
+     */
+    public function activeCard()
+    {
+        $cards = $this->getDoctrine()
+            ->getRepository(Card::class)
+            ->findCardByState('active');
+
+        return $this->render('card/index.html.twig', [
+            'cards' => $cards
+        ]);
+    }
 }
