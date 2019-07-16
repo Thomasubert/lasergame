@@ -30,7 +30,13 @@ class RequestcardController extends AbstractController
             $lastUsername = $authenticationUtils->getLastUsername();
 
            // dd($this->getUser()->getCard()->getStatus());
+        if($checkCardFree=$cardRepository->findFreeCard()==false)
+        {
+            $this->addFlash('success', 'Les cartes sont indisponible en stock');
 
+            return $this->redirectToRoute('redirectRequesttouserhome');
+
+        }
 
          if($this->getUser()->getCard()==null)
          {

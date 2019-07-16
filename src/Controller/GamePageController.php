@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("gamePage")
  */
-class gamePageController extends AbstractController
+class GamePageController extends AbstractController
 {
     /**
      * @Route("/")

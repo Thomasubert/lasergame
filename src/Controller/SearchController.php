@@ -69,17 +69,31 @@ class SearchController extends AbstractController
     {
         $searchCardForm = $this->createForm(SearchCardType::class);
 
+
         if($searchCardForm->handleRequest($request)->isSubmitted() && $searchCardForm->isValid())
         {
             $criteria = $searchCardForm->getData();
 
+            //dd($criteria);
+
             $card = $cardRepository->searchCard($criteria);
 
+            //dd($card);
 
+           // $this->getDoctrine()->getRepository('AppBundle:Card')->findBy(array('status' => $_POST['email']));
+
+            //$checkCardFree = $this->getDoctrine()->getRepository('CardBundle:Card')->find($this->getParameter($getStatus()));
+
+           // $checkCardFree=$cardRepository->findFreeCard($customerCode);
+           // $cards=$cardRepository->findAll();
+
+             dd($checkCardFree=$cardRepository->findFreeCard());
+
+            //dd($checkCardFree);
 
             if(empty($card))
             {
-                //dd($card);
+
                 return $this->render('search/card.html.twig',
                     [
                         'card' => $card,
