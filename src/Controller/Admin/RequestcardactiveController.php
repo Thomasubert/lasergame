@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,22 +18,49 @@ use App\Form\RespcardactiveType;
 
 class RequestcardactiveController extends AbstractController
 {
+
+
     /**
-     * @Route("/requestcardactive", name="requestcardactive")
+     * @param EntityManagerInterface $em
+     * return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/requestcardactiveadmin/{id}",defaults={"id": null}, requirements={"id": "\d+"}, name="requestcardactiveadmin")
      */
-    public function index(AuthenticationUtils $authenticationUtils,EntityManagerInterface $em,CardRepository $cardRepository)
+    public function index(AuthenticationUtils $authenticationUtils,EntityManagerInterface $em,CardRepository $cardRepository, $id)
     {
+          $result = $em->find(Card::class, $id);
+          //dd($result->getId());
+          $result->setStatus("active");
+          $em->persist($result);
+          $em->flush();
+          $this->addFlash('success', 'La carte est activée');
 
-        $form=$this->createForm(RespcardactiveType::class);
+        $cards = $cardRepository->findAll();
 
-        return $this->render('card/requestcardactive.html.twig', [
-            'form'=>$form->createView()
-
+        return $this->render('card/index.html.twig', [
+            'cards' => $cards
         ]);
+    }
+//@param EntityManagerInterface $em
+// @param Card $card
+//@return \Symfony\Component\HttpFoundation\RedirectResponse
+
+    public function delete(EntityManagerInterface $em, Card $card)
+    {
+        $em->remove($card);
+        $em->flush();
+        $this->addFlash(
+            'success',
+            'La carte est bien désactivée'
+        );
+
+        return $this->redirectToRoute(
+            'app_admin_card_index'
+        );
+
     }
 
     /**
-     * @Route("/responsecardactive", name="responsecardactive")
+     * @Route("/responsecardactiveadmin", name="responsecardactiveadmin")
      */
     public function responseActivecard(Request $request,AuthenticationUtils $authenticationUtils,EntityManagerInterface $em,CardRepository $cardRepository)
     {
