@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Card\CardWorkflowHandler;
 use App\Service\CardGenerator;
 use App\Entity\Card;
 use App\Form\CardType;
@@ -11,9 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-
-
-
+use Symfony\Component\Workflow\Exception\LogicException;
 
 
 /**
@@ -180,4 +179,29 @@ class CardController extends AbstractController
             'cards' => $cards
         ]);
     }
+
+    /**
+     * @param $state
+     * @param Card $card
+     * @param Request $request
+     * @param CardWorkflowHandler $cwh
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/workflow/{state}/{id}", name="card_workflow")
+     */
+    public function workflow($state, Card $card, Request $request, CardWorkflowHandler $cwh)
+    {
+        //traitement du workflow
+        try{
+            $cwh->handle($card, $state);
+
+            //notification
+            $this->addFlash('notice', 'La carte est transmise');
+        }catch (LogicException $e){
+            $this->addFlash('error', 'changement de status impossible');
+        }
+
+        return $this->redirectToRoute('app_admin_card_index');
+    }
+
+
 }
