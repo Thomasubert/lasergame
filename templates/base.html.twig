@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html style="height:100%">
+<html>
 
 <head>
 
@@ -25,7 +25,7 @@
 
 </head>
 
-<body style="height:100%; background-attachment:fixed" background="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2017/1-meteor.jpg">
+<body style="background-attachment:fixed" background="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2017/1-meteor.jpg">
 
 <div class="container" id="nav-container">
 
@@ -52,8 +52,9 @@
     {% endfor %}
     
 <nav class="navbar is-light" role="navigation" aria-label="main navigation" >
+
     <div class="navbar-brand">
-        <a class="navbar-item" href="{{ path('app_index_index') }}">
+        <a class="navbar-item" style="margin-left: 20px" href="{{ path('app_index_index') }}">
            SHINIGAMI LASER
         </a>
 
@@ -68,12 +69,12 @@
 
     <div id="navbar-menu-id" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="{{ path('app_gamepage_index') }}">
+            <a class="navbar-item" style="margin-right: 10px" href="{{ path('app_gamepage_index') }}">
                 Le jeu
             </a>
 
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
+                <a class="navbar-link" style="margin-right: 10px">
                     Plus
                 </a>
 
@@ -84,7 +85,7 @@
                     <a class="navbar-item">
                         Actualité
                     </a>
-                    <a class="navbar-item"href="{{ path('app_contact_index') }}">
+                    <a class="navbar-item" href="{{ path('app_contact_index') }}">
                         Contact
                     </a>
 
@@ -96,7 +97,7 @@
         {% if is_granted('ROLE_ADMIN')  %}
         <div class="navbar-start">
             <div class="navbar-start">
-                <a class="navbar-item"href="{{ path('app_admin_card_index') }}">
+                <a class="navbar-item" style="margin-right: 10px" href="{{ path('app_admin_card_index') }}">
                     Gestion des cartes et des joueurs
                 </a>
 
@@ -112,7 +113,7 @@
                 <div class="buttons">
 
                     {% if is_granted('ROLE_ADMIN')  %}
-                        <a class="button is-rounded is-primary is-focused" href="{{ path('app_admin_player_edit') }}">
+                        <a class="button is-rounded is-primary is-focused" style="margin-right: 10px" href="{{ path('app_admin_player_edit') }}">
                             <strong>Ajouter un joueur</strong>
                         </a>
                     {% endif %}
@@ -121,27 +122,27 @@
 
 
                     {% if is_granted('ROLE_ADMIN')  %}
-                        <a class="button is-rounded is-primary is-outlined" href="{{ path('app_admin_player_index') }}">
+                        <a class="button is-rounded is-primary is-outlined" style="margin-right: 10px" href="{{ path('app_admin_player_index') }}">
                             <strong>Liste des joueurs</strong>
                         </a>
                     {% endif %}
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false  %}
-                    <a class="button is-rounded is-primary is-focused" href="{{ path('app_registration_register') }}">
+                    <a class="button is-rounded is-primary is-focused" style="margin-right: 10px" href="{{ path('app_registration_register') }}">
                         <strong>Inscription</strong>
                     </a>
                     {% endif %}
 
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false  %}
-                    <a class="button is-rounded is-primary is-outlined"href="{{ path('app_login') }}">
+                    <a class="button is-rounded is-primary is-outlined" style="margin-right: 10px" href="{{ path('app_login') }}">
                         Connexion
                     </a>
                     {% endif %}
 
 
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    Bonjour  {{ app.user }}   
+                    <p style="margin-right: 5px"> Bonjour  {{ app.user }}  </p>
                     <span class="icon is-medium">
-                        <a href="{{ path('app_connexion_logout') }}" title="Déconnexion">
+                        <a href="{{ path('app_connexion_logout') }}" style="margin-right: 10px" title="Déconnexion">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
                     </span>
@@ -149,7 +150,7 @@
 
 
                     <span class="icon is-medium">
-                        <a href="#" title="Aide">
+                        <a href="#" style="margin-right: 10px" title="Aide">
                             <i class="far fa-question-circle"></i>
                         </a>
                     </span>
@@ -157,7 +158,8 @@
             </div>
         </div>
     </div>
-</nav>
+        </div>
+        </nav>
 </div>
 
 

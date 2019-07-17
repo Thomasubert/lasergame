@@ -8,6 +8,11 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
     <br><br>
+    <div class="container">
+        <div class="notification">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cupiditate dicta dolorum illo illum iure libero nemo nobis nulla odio, optio provident sed tempora veritatis, voluptatum? Eius qui sint tempore.</p>
+        </div>
+    </div>
     <div class="container example-wrapper">
         <div class="tile is-ancestor">
             <div class="tile is-vertical is-8">
@@ -55,13 +60,12 @@
         </div>
     </div>
 
-    <div class="example-wrapper">
 
 
 {% if is_granted('ROLE_USER')  %}
 
 
-<table class="table">
+<table class="table notification example-wrapper">
         <tr>
             <th>score</th>
             <th>victory</th>
@@ -73,7 +77,6 @@
                 <td> ------</td>
                 <td> ------</td>
                 <td>
-    </table><br/>
 
                     <a href="{{ path('requestcard') }}"  
                        class="button is-info">
@@ -86,7 +89,9 @@
                 </td>
 
             </tr>
+</table>
+
 
  {% endif %}
-    </div>
+
 {% endblock %}
