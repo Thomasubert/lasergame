@@ -87,7 +87,7 @@ class SearchController extends AbstractController
            // $checkCardFree=$cardRepository->findFreeCard($customerCode);
            // $cards=$cardRepository->findAll();
 
-             dd($checkCardFree=$cardRepository->findFreeCard());
+            // dd($checkCardFree=$cardRepository->findFreeCard());
 
             //dd($checkCardFree);
 

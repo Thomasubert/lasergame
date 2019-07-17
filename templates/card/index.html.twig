@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CardController!{% endblock %}
+{% block title %}{{ parent() }} - Joueurs/Cartes{% endblock %}
 
 {% block body %}
 
@@ -31,7 +31,6 @@
             Ajouter une carte
         </a> <br/>
 
-        {{ dump(cards[0].getUser().getLastname()) }}
         <table class="table">
             <tr>
                 <th>Code Centre</th>

@@ -83,7 +83,7 @@ class UserType extends AbstractType
             ->add('birthdate',
                 BirthdayType::class,
                 [
-                    'label' => 'Date de naissance du joueur',
+                    'label' => false,
                     'required' => false,
                     'widget' => 'choice',
                     'format' => 'dd/MM/yyyy',
