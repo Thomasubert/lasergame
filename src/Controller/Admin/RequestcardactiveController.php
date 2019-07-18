@@ -27,7 +27,8 @@ class RequestcardactiveController extends AbstractController
      */
     public function index(AuthenticationUtils $authenticationUtils,EntityManagerInterface $em,CardRepository $cardRepository, $id)
     {
-          $result = $em->find(Card::class, $id);
+
+        $result = $em->find(Card::class, $id);
           //dd($result->getId());
           $result->setStatus("active");
           $em->persist($result);
@@ -40,9 +41,7 @@ class RequestcardactiveController extends AbstractController
             'cards' => $cards
         ]);
     }
-//@param EntityManagerInterface $em
-// @param Card $card
-//@return \Symfony\Component\HttpFoundation\RedirectResponse
+
 
     public function delete(EntityManagerInterface $em, Card $card)
     {

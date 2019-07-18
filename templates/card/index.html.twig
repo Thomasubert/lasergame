@@ -31,7 +31,6 @@
             Ajouter une carte
         </a> <br/>
 
-        {#{{ dump(cards[5].getUser().getLastname()) }}#}
         <table class="table">
             <tr>
                 <th>Code Centre</th>
@@ -62,7 +61,7 @@
 
                                 {% elseif card.getStatus()=="active" %}
                                     <a href="#"
-                                       class="btn btn-primary">
+                                       class="btn btn-primary  ">
                                         Succès
                                     </a>
                             {% else %}
