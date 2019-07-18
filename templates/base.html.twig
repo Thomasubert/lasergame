@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html style="height:100%">
 
 <head>
 
@@ -16,13 +16,17 @@
               crossorigin="anonymous">
         <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
         <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+              integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+              crossorigin=""/>
+
+
     {% endblock %}
+
 
 </head>
 
-<body>
-
-
+<body style="height:100%; background-attachment:fixed" background="https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/hires/2017/1-meteor.jpg">
 
 <div class="container" id="nav-container">
 
@@ -48,13 +52,18 @@
         {% endfor %}
     {% endfor %}
     
-<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+<nav class="navbar is-light" role="navigation" aria-label="main navigation" >
     <div class="navbar-brand">
         <a class="navbar-item" href="{{ path('app_index_index') }}">
-           LASER GAME
+           SHINIGAMI LASER
         </a>
 
+
        <a id="navbar-burger-id" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" aria-controls="dropdown-menu">
+
+       </a>
+        <a id="navbar-burger-id" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu-id" aria-controls="dropdown-menu">
+
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -63,14 +72,11 @@
 
     </div>
 
+
     <div id="navbar-menu-id" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item">
+            <a class="navbar-item" href="{{ path('app_gamepage_index') }}">
                 Le jeu
-            </a>
-
-            <a class="navbar-item">
-                Forum
             </a>
 
             <div class="navbar-item has-dropdown is-hoverable">
@@ -90,22 +96,21 @@
                     </a>
 
                 </div>
-            </div>
+            </div>  
         </div>
+
+
         {% if is_granted('ROLE_ADMIN')  %}
-        <div id="navbar-menu-id" class="navbar-menu">
+        <div class="navbar-start">
             <div class="navbar-start">
                 <a class="navbar-item"href="{{ path('app_admin_card_index') }}">
-                    <strong> Gestion Cartes Fidélité</strong>
+                    Gestion des cartes et des joueurs
                 </a>
 
-                {#<a class="navbar-item">
-                    <strong>  User </strong>
-                </a>#}
             </div>
-        </div>
+            {% endif %}
 
-        {% endif %}
+
 
 
 
@@ -141,6 +146,7 @@
 
 
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    Bonjour  {{ app.user }}   
                     <span class="icon is-medium">
                         <a href="{{ path('app_connexion_logout') }}" title="Déconnexion">
                             <i class="fas fa-sign-out-alt"></i>
@@ -160,10 +166,12 @@
     </div>
 </nav>
 </div>
+</div>
 
 
-    {% block body %}{% endblock %}
+    {% block body %}
 
+    {% endblock %}
 
 
 
@@ -181,6 +189,17 @@
     <script src="{{ asset('lib/bootstrap/bootstrap.min.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script>
+            (function() {
+            var burger=document.querySelector('.burger');
+            var nav=document.querySelector('#'+burger.dataset.target);
+
+            burger.addEventListener('click', function(){
+             burger.classList.toggle('is-active');
+             nav.classList.toggle('is-active');
+             });
+            })();
+            </script>
 
 {% endblock %}
 

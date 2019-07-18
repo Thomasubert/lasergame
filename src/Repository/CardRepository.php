@@ -33,8 +33,8 @@ class CardRepository extends ServiceEntityRepository
         $qb
             ->where('u.codeCard = :codeCard')
             ->setParameter('codeCard', $criteria['codeCard']);
-            /*->where('u.checksum = :checksum')
-            ->setParameter('checksum', $criteria['checksum']);*/
+        /*->where('u.checksum = :checksum')
+        ->setParameter('checksum', $criteria['checksum']);*/
 
         //}
 
@@ -51,20 +51,28 @@ class CardRepository extends ServiceEntityRepository
 
     }
 
-    /**
-     * Récupérer toutes les cartes par état
-     * @param string $state
-     * @return mixed
-     */
-    public function findCardByState(string $state)
-    {
-        return $this->createQueryBuilder('c')
-            ->where('a.state LIKE :state')
-            ->setParameter('state', "%$state%")
-            ->orderBy('c.id', 'DESC')
-            ->getQuery()
-            ->getResult();
-    }
+
+     /*/**
+      * Récupérer toutes les cartes par état
+      * @param string $state
+      * @return mixed
+      */
+    /*public function findCardByState(string $state)
+     {
+         return $this->createQueryBuilder('c')
+             ->where('a.state LIKE :state')
+             ->setParameter('state', "%$state%")
+             ->orderBy('c.id', 'DESC')
+             ->getQuery()
+             ->getResult();
+
+     public function findFreeCard() {
+         $qb = $this->createQueryBuilder('card')
+             ->andWhere('card.status = :customerCode')
+             ->setParameter(':customerCode', 'libre');
+         return (boolean)$qb->getQuery()->getResult();
+
+     }*/
     // /**
     //  * @return Card[] Returns an array of Card objects
     //  */
@@ -82,7 +90,7 @@ class CardRepository extends ServiceEntityRepository
     }
     */
 
-    /*
+
     public function findOneBySomeField($value): ?Card
     {
         return $this->createQueryBuilder('c')
@@ -92,5 +100,5 @@ class CardRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }

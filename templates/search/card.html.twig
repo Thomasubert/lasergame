@@ -2,24 +2,56 @@
 
 {% block body %}
 
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+
+    <div class="example-wrapper">
+
     <h1>Recherche avancée</h1>
 
-    {{ form_start(search_form) }}
 
-    {{ form_row(search_form.codeCard) }}
+    {% if is_granted('ROLE_ADMIN')  %}
 
-    {{ form_end(search_form) }}
+    <div class="example-wrapper">
+
+        <h1>Rechercher un joueur</h1>
+
+        {{ form_start(search_form) }}
+
+        {{ form_row(search_form.codeCard) }}
+        
+        
+       
+        <div class="control">
+            <button class="button is-primary" type="submit">
+                Trouver
+            </button>
+        </div>
+         {{ form_end(search_form) }}
+
+        {% endif %}
+
+
 
     <table class="table">
 
         <tr>
             <th>Carte n°</th>
+            <th>État</th>
+            <th>Nom</th>
+            <th>Prénom</th>
             <th width="250px"></th>
         </tr>
-
+        {% if card is empty %}
+            <td>La carte n'existe pas</td>
+        {% endif %}
         {% for c in card %}
             <tr>
-                <td>{{ c.codeCard }}</td>
+
+                {#<td>{{ c.codeCard }}</td>
 
                 <td>
                     <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
@@ -29,16 +61,45 @@
                     <a href="{{ path('app_admin_card_delete', {'id': c.id}) }}"
                        class="btn btn-danger">
                         Supprimer
-                    </a>
+                    </a>#}
+
+                <td>{{ card[0].getCodeCard() }}</td>
+                <td>{{ card[0].getStatus()}} </td>
+                {% if rowuser is defined %}
+                <td> {{  rowuser.getLastname()}} </td>
+                <td> {{  rowuser.getFirstname()}} </td>
+                    <td>
+                        <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
+                           class="btn btn-primary">
+                            Activer
+                        </a>
+                        <a href="{{ path('app_admin_card_delete', {'id': c.id}) }}"
+                           class="btn btn-danger">
+                            Supprimer
+                        </a>
+                    </td>
+                {% else %}
+                    <td> - - -  </td>
+                    <td> - - -</td>
+                    <td>
+                        <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
+                           class="btn btn-primary">
+                            Attribué
+                        </a>
+                        <a href="{{ path('app_admin_card_delete', {'id': c.id}) }}"
+                           class="btn btn-danger">
+                            Supprimer
+                        </a>
+                    </td>
+                {% endif %}
+
                 </td>
                 <br>
             </tr>
-
-
         {% endfor %}
-
-
     </table>
+
+{#{{dump(rowuser)}}#}
 
 {% endblock %}
 

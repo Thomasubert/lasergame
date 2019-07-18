@@ -1,8 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Hello User Index!{% endblock %}
 
 {% block body %}
+
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+<table class="table">
+        <tr>
+            <th>score</th>
+            <th>victory</th>
+            <th>date</th>
+            <th width="250px"></th>
+        </tr>
+            <tr>
+                <td> ------</td>
+                <td> ------</td>
+                <td> ------</td>
+                <td>
+    </table><br/>
+
+                    <a href="{{ path('requestcard') }}"
+                       class="button is-info">
+                         Demander une carte !
+                    </a>
+                    <a href="{{ path('requestcardactive') }}"
+                       class="button is-danger">
+                        Activer la carte !
+                    </a>
+                </td>
+
+            </tr>
+
+
+{% if is_granted('ROLE_ADMIN')  %}
+
+
     <h1>Utilisateurs</h1>
 
     <a href="{{ path('app_user_edit') }}"
@@ -61,6 +98,6 @@
             </tr>
         {% endfor %}
     </table>
-
-
+{% endif %}
+    </div>
 {% endblock %}

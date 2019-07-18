@@ -3,52 +3,120 @@
 {% block title %}Hello CardController!{% endblock %}
 
 {% block body %}
-    <h1>Cartes</h1>
 
-    <a href="{{ path('app_admin_card_edit') }}"
-       class="btn btn-outline-primary mb-3">
-        Ajouter une carte
-    </a> <br/>
-    <a href="{{ path('app_admin_card_index') }}"
-       class="btn btn-outline-primary mb-3">
-        Lister les cartes
-    </a>
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
 
-    <table class="table">
-        <tr>
-            <th>Code Centre</th>
-            <th>Code carte</th>
-            <th>Clé</th>
-            <th>Nombre de parties</th>
-            <th width="250px"></th>
-        </tr>
-        {% for card in cards%}
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+
+    <div class="example-wrapper">
+
+        <h1>Cartes</h1>
+
+        <a href="{{ path('app_search_searchcard') }}"
+           class="btn btn-outline-primary mb-3">
+            Recherche une carte
+        </a> <br/>
+        <a href="{{ path('app_admin_card_edit') }}"
+           class="btn btn-outline-primary mb-3">
+            Ajouter une carte
+        </a> <br/>
+
+        {#{{ dump(cards[5].getUser().getLastname()) }}#}
+        <table class="table">
             <tr>
-                <td>{{ card.getCodeCentre() }}</td>
-                <td>{{ card.getCodeCard()}}</td>
-                <td>{{ card.getChecksum() }}</td>
-                <td>{{ card.getStatus() }}</td>
-                <td>{{ card.getNumberOfGames() }}</td>
-
-                <td>
-                    <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}"
-                       class="btn btn-primary">
-                        Modifier
-                    </a>
-                    <a href="{{ path('app_admin_card_delete', {'id': card.id}) }}"
-                       class="btn btn-danger">
-                        Supprimer
-                    </a>
-                </td>
+                <th>Code Centre</th>
+                <th>Code carte</th>
+                <th>Clé</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Statut</th>
+                <th>Nombre de parties</th>
+                <th width="250px"></th>
             </tr>
-        {% else %}
+            {% for key,card in cards %}
+                {% if card.user %}
+                    <tr>
+                        <td>{{ card.codeCentre }}</td>
+                        <td>{{ card.codeCard }}</td>
+                        <td>{{ card.checksum }}</td>
+                        <td>{{ card.user.lastname }}</td>
+                        <td>{{ card.user.firstname }}</td>
+                        <td>{{ card.status }}</td>
+                        <td>{{ card.numberOfGames }}</td>
+                        <td>
+                            {% if card.getStatus()=="attribué" %}
+                                <a href="{{ path('requestcardactiveadmin', {'id': card.id}) }}"
+                                   class="btn btn-primary">
+                                    Activer
+                                </a>
+
+                                {% elseif card.getStatus()=="active" %}
+                                    <a href="#"
+                                       class="btn btn-primary">
+                                        Succès
+                                    </a>
+                            {% else %}
+                                <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}"
+                                   class="btn btn-primary">
+                                    Attribué
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('app_admin_card_delete', {'id': card.id}) }}"
+                               class="btn btn-danger">
+                                Supprimer
+                            </a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            {% for key,card in cards %}
+                    {% if card.user is null%}
+                    <tr>
+                         <td>{{ card.codeCentre }}</td>
+                         <td>{{ card.codeCard }}</td>
+                         <td>{{ card.checksum }}</td>
+                         <td>- - -</td>
+                         <td>- - -</td>
+                         <td>{{ card.status }}</td>
+                         <td>{{ card.numberOfGames }}</td>
+                         <td>
+                             {% if card.getStatus()=="libre" %}
+                                 <a href="{{ path('requestcardactiveadmin', {'id': card.id}) }}"
+                                class="btn btn-primary">
+                                 Attribué
+                                 </a>
+                             {% endif %}
+                        <td>
+                            <a href="{{ path('app_admin_card_delete', {'id': card.id}) }}"
+                               class="btn btn-danger">
+                                Supprimer
+                            </a>
+                        </td>
+                     <tr>
+                    {% endif %}
+            {% endfor %}
+                {% if cards is empty%}
             <tr>
                 <td colspan="5" class="text-center">
                     Aucun résultat
                 </td>
             </tr>
-        {% endfor %}
-    </table>
+            {% endif %}
+        </table>
+
+    </div>
 
 
 {% endblock %}
