@@ -24,19 +24,14 @@ class Game
     private $score;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $victory;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $date;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="games")
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $name;
 
     public function __construct()
     {
@@ -46,6 +41,18 @@ class Game
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     public function getScore(): ?int
@@ -60,29 +67,7 @@ class Game
         return $this;
     }
 
-    public function getVictory(): ?bool
-    {
-        return $this->victory;
-    }
 
-    public function setVictory(?bool $victory): self
-    {
-        $this->victory = $victory;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(?\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
 
     /**
      * @return Collection|User[]
@@ -109,4 +94,5 @@ class Game
 
         return $this;
     }
+
 }
