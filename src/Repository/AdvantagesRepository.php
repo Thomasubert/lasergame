@@ -20,6 +20,7 @@ class AdvantagesRepository extends ServiceEntityRepository
     }
 
     // /**
+
     //  * @return Advantages[] Returns an array of Advantages objects
     //  */
     /*
