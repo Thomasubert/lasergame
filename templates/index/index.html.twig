@@ -79,10 +79,15 @@
                        class="button is-info">
                          Demander une carte !
                     </a>
-                    <a href="{{ path('requestcardactive') }}"
+                    {% if worflow_can(card, 'active') %}
+                    <a href="{{ path('card_workflow', {
+                        'id' : card.id,
+                        'status' : 'active'
+                    }) }}"
                        class="button is-danger">
                         Activer la carte !
                     </a>
+                        {% endif %}
                 </td>
 
             </tr>
