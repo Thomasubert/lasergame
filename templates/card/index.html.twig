@@ -54,12 +54,13 @@
                         <td>{{ card.status }}</td>
                         <td>{{ card.numberOfGames }}</td>
                         <td>
-                            {% if card.getStatus()=="attribué" %}
+                           {% if workflow_can(card, 'active') %}
                                 <a href="{{ path('card_workflow', {'id': card.id,
                                 'state' : 'active'}) }}"
                                    class="btn btn-primary">
                                     Activer
                                 </a>
+                               {% endif %}
 
                                 {% elseif card.getStatus()=="active" %}
                                     <a href="#"
@@ -67,7 +68,9 @@
                                         Succès
                                     </a>
                             {% else %}
-                                <a href="{{ path('app_admin_card_edit', {'id': card.id}) }}"
+                                {% if workflow_can(card, 'affected') %}
+                                <a href="{{ path('card_workflow', {'id': card.id,
+                                'state' : 'affected'}) }}"
                                    class="btn btn-primary">
                                     Attribué
                                 </a>
@@ -93,10 +96,11 @@
                          <td>{{ card.status }}</td>
                          <td>{{ card.numberOfGames }}</td>
                          <td>
-                             {% if card.getStatus()=="libre" %}
-                                 <a href="{{ path('requestcardactiveadmin', {'id': card.id}) }}"
-                                class="btn btn-primary">
-                                 Attribué
+                             {% if workflow_can(card, 'affected') %}
+                                 <a href="{{ path('card_workflow', {'id': card.id,
+                                     'state' : 'affected'}) }}"
+                                    class="btn btn-primary">
+                                     Attribué
                                  </a>
                              {% endif %}
                         <td>
