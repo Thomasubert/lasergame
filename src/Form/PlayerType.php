@@ -79,6 +79,12 @@ class PlayerType extends AbstractType
                     
                //  ])
 
+               ->add('score', IntegerType::class,
+              [ 'label' => false,
+                  'attr' => [
+        'class' => 'input'
+    ]])
+
            ->add('streetNumber',
                IntegerType::class,
                [

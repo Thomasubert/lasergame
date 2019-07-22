@@ -12,7 +12,7 @@
 
 {{ form_start(form) }}
 
-        <h2 class="title is-2" style="color: white;">Ajouter un joueur</h2>
+        <h2 class="title is-2" style="color: white;">Ajouter / Modifier un joueur</h2>
 
     <div class="field">
         <div class="control"></div>
@@ -48,7 +48,16 @@
 
         </div>
 
-    <br>
+        <h4 class="title is-4" style="color: white;"> Score</h4>
+        <div class="field">
+            <div class="control">
+
+                {{ form_row(form.score) }}
+            </div>
+        </div>
+
+
+        <br>
 
     <h4 class="title is-4" style="color: white;">Adresse postale</h4>
 

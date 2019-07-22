@@ -151,6 +151,8 @@
 </div>
 
 {% block body %}
+
+    {% for user in users %}
     <table class="table">
         <tr>
             <th>score</th>
@@ -159,7 +161,7 @@
             <th width="250px"></th>
         </tr>
             <tr>
-                <td> ------</td>
+                <td> {{ user.score }}</td>
                 <td> ------</td>
                 <td> ------</td>
                 <td>
@@ -176,6 +178,7 @@
                 </td>
 
             </tr>
+    {% endfor %}
 
 
 
