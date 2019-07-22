@@ -7,51 +7,50 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
+    <br><br>
     <div class="example-wrapper">
 
 {{ form_start(form) }}
 
-
+        <h2 class="title is-2" style="color: white;">Ajouter un joueur</h2>
 
     <div class="field">
         <div class="control"></div>
-            <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-            </span>
+
         {{ form_row(form.lastname) }}
     </div>
 
     <div class="field">
         <div class="control">
 
-           <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span> {{ form_row(form.firstname) }}
+         {{ form_row(form.firstname) }}
     </div>
     </div>
 
     <div class="field">
-        <div class="control">
-            <i class="far fa-calendar-alt"></i>{{ form_row(form.birthdate) }}
-    </div>
+        <div class="control"></div>
+            {{ form_row(form.email) }}
+
     </div>
 
     <div class="field">
-        <div class="control">
-            <i class="fas fa-envelope"></i> {{ form_row(form.email) }}
-    </div>
-    </div>
-
-    <div class="field">
-        <div class="control">
+        <div class="control"></div>
 
     {{ form_row(form.phone) }}
+
     </div>
-    </div>
+
+        <h5 class="title is-5" style="color: white;">Date de naissance</h5>
+        <div class="field">
+
+            <div class="control"></div>
+            {{ form_row(form.birthdate) }}
+
+        </div>
 
     <br>
 
-    <h4 class="title is-4">Adresse postale</h4>
+    <h4 class="title is-4" style="color: white;">Adresse postale</h4>
 
     <div class="field">
         <div class="control">
@@ -88,9 +87,9 @@
         </div>
     </div>
 
+        <br>
 
-
-    <div class="control">
+    <div class="control" style="text-align: right">
         <button class="button is-primary" type="submit">
             Enregistrer
         </button>

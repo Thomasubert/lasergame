@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper has-text-white">
+
+        <h1 class="title is-1 is has-text-white">Ajout d'un jeu</h1>
+        <br>
+
+
+        {{ form_start(form) }}
+
+        <div class="text-right">
+            <button type="submit" class="button btn-primary">
+                Enregistrer
+            </button>
+            <a href="{{ path('app_game_index') }}"
+               class="button btn-outline-secondary">
+                Retour
+            </a>
+        </div>
+        <br>
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
+
+
+

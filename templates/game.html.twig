@@ -1,18 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-
-{% endblock %}
+{% block title %}{{ parent() }} - Le jeu {% endblock %}
 
 {% block body %}
 
-    <style>
-        .example-wrapper { margin: 1em auto;  width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
+
 
     <br>
-    <div class="container example-wrapper">
+    <div id="example-wrapper" class="container">
         <div class="notification">
           <h3 class="title is-3">Les Règles de Fair-Play</h3>
 
@@ -41,7 +36,7 @@
 
                 <br><br>
 
-                <strong>T’es shooté* tu descends !</strong><br>
+                <strong>T’es shooté: tu descends !</strong><br>
                 Si un joueur est sur une hauteur et se fait désactiver il doit immédiatement descendre ! Cette règle permet de brasser plus le jeu et d'éviter qu'un joueur passe toute la partie sur une hauteur.
 
                 <br><br>

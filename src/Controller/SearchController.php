@@ -79,7 +79,10 @@ class SearchController extends AbstractController
 
             $card = $cardRepository->searchCard($criteria);
 
+
+
              $checkCardFree=$cardRepository->findFreeCard();
+
 
             //dd($card);
 
