@@ -1,4 +1,21 @@
 {
+    "api-platform/api-pack": {
+        "version": "v1.2.0"
+    },
+    "api-platform/core": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.1",
+            "ref": "18727d8f229306860b46955f438e1897421da689"
+        },
+        "files": [
+            "./config/packages/api_platform.yaml",
+            "./config/routes/api_platform.yaml",
+            "./src/Entity/.gitignore"
+        ]
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -105,11 +122,26 @@
             "./config/packages/dev/easy_log_handler.yaml"
         ]
     },
+    "fig/link-util": {
+        "version": "1.0.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
     "monolog/monolog": {
         "version": "1.24.0"
+    },
+    "nelmio/cors-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "f0436fc35fca88eada758311f8de43bfb61f1980"
+        },
+        "files": [
+            "./config/packages/nelmio_cors.yaml"
+        ]
     },
     "nikic/php-parser": {
         "version": "v4.2.2"
@@ -123,10 +155,22 @@
     "pagerfanta/pagerfanta": {
         "version": "v2.1.2"
     },
+    "phpdocumentor/reflection-common": {
+        "version": "1.0.1"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "4.3.1"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "0.4.0"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
     "psr/container": {
+        "version": "1.0.0"
+    },
+    "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
@@ -210,6 +254,9 @@
     },
     "symfony/event-dispatcher-contracts": {
         "version": "v1.1.5"
+    },
+    "symfony/expression-language": {
+        "version": "v4.3.2"
     },
     "symfony/filesystem": {
         "version": "v4.3.2"
@@ -338,6 +385,9 @@
     "symfony/property-access": {
         "version": "v4.3.2"
     },
+    "symfony/property-info": {
+        "version": "v4.3.2"
+    },
     "symfony/requirements-checker": {
         "version": "1.0",
         "recipe": {
@@ -447,6 +497,9 @@
     "symfony/var-exporter": {
         "version": "v4.3.2"
     },
+    "symfony/web-link": {
+        "version": "v4.3.2"
+    },
     "symfony/web-profiler-bundle": {
         "version": "3.3",
         "recipe": {
@@ -488,8 +541,14 @@
     "twig/twig": {
         "version": "v2.11.3"
     },
+    "webmozart/assert": {
+        "version": "1.4.0"
+    },
     "white-october/pagerfanta-bundle": {
         "version": "v1.2.4"
+    },
+    "willdurand/negotiation": {
+        "version": "v2.3.1"
     },
     "zendframework/zend-code": {
         "version": "3.3.1"
