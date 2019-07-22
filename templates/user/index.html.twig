@@ -7,6 +7,10 @@
 
 
     <div class="example-wrapper">
+
+
+
+
 <table class="table">
         <tr>
             <th>score</th>
@@ -14,8 +18,12 @@
             <th>date</th>
             <th width="250px"></th>
         </tr>
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+
             <tr>
-                <td> ------</td>
+                <td> {{ app.user.score }}</td>
                 <td> ------</td>
                 <td> ------</td>
                 <td>
@@ -32,6 +40,7 @@
                 </td>
 
             </tr>
+        {% endif %}
 
 
 {% if is_granted('ROLE_ADMIN')  %}
@@ -55,7 +64,6 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Email</th>
-            <th>Score</th>
             <th>Numéro</th>
             <th>Rue</th>
             <th>Code postal</th>
@@ -69,7 +77,6 @@
                 <td>{{ user.lastname }}</td>
                 <td>{{ user.firstname }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.score }}</td>
                 <td>{{ user.streetNumber }}</td>
                 <td>{{ user.streetName }}</td>
                 <td>{{ user.zip }}</td>

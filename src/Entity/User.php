@@ -100,7 +100,7 @@ class User implements UserInterface
     private $games;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $score;
 
@@ -337,12 +337,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getScore(): ?int
+    public function getScore(): ?string
     {
         return $this->score;
     }
 
-    public function setScore(?int $score): self
+    public function setScore(?string $score): self
     {
         $this->score = $score;
 

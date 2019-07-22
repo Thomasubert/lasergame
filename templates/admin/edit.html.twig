@@ -7,38 +7,45 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
-    <br><br>
+    <br>
     <div class="example-wrapper">
 
 {{ form_start(form) }}
 
-        <h2 class="title is-2" style="color: white;">Ajouter / Modifier un joueur</h2>
 
-    <div class="field">
+        <h2 class="title is-2" style="color: white;">Ajouter / Modifier un joueur</h2>
+            <div class="columns">
+    <div class="field column">
         <div class="control"></div>
 
         {{ form_row(form.lastname) }}
     </div>
 
-    <div class="field">
+    <div class="field column">
         <div class="control">
 
          {{ form_row(form.firstname) }}
     </div>
     </div>
 
-    <div class="field">
+            </div>
+
+        <div class="columns">
+
+    <div class="field column">
         <div class="control"></div>
             {{ form_row(form.email) }}
 
     </div>
 
-    <div class="field">
+    <div class="field column">
         <div class="control"></div>
 
     {{ form_row(form.phone) }}
 
     </div>
+    </div>
+
 
         <h5 class="title is-5" style="color: white;">Date de naissance</h5>
         <div class="field">
@@ -47,8 +54,24 @@
             {{ form_row(form.birthdate) }}
 
         </div>
+    <div class="columns">
+        <div class="field column">
+            <div class="control">
 
-        <h4 class="title is-4" style="color: white;"> Score</h4>
+                {{ form_row(form.password) }}
+            </div>
+        </div>
+        <div class="field column">
+            <div class="control">
+
+                {{ form_row(form.password) }}
+            </div>
+        </div>
+    </div>
+
+        <br>
+
+        <h4 class="title is-4" style="color: white;"> Score </h4>
         <div class="field">
             <div class="control">
 
@@ -61,19 +84,6 @@
 
     <h4 class="title is-4" style="color: white;">Adresse postale</h4>
 
-    <div class="field">
-        <div class="control">
-
-            {{ form_row(form.streetNumber) }}
-        </div>
-    </div>
-
-    <div class="field">
-        <div class="control">
-
-            {{ form_row(form.streetName) }}
-        </div>
-    </div>
 
     <div class="field">
         <div class="control">
@@ -90,11 +100,12 @@
     </div>
 
     <div class="field">
-        <div class="control">
+            <div class="control">
 
-            {{ form_row(form.country) }}
+                {{ form_row(form.country) }}
+            </div>
         </div>
-    </div>
+
 
         <br>
 

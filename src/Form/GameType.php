@@ -22,7 +22,7 @@ class GameType extends AbstractType
                 ]
             )
 
-            ->add('score', IntegerType::class, [
+            ->add('score', TextType::class, [
                 'attr'=>[
                     'class' => 'input'
                 ]

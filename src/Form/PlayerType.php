@@ -5,14 +5,13 @@ namespace App\Form;
 use App\Entity\Address;
 use App\Entity\Card;
 use App\Entity\User;
-use phpDocumentor\Reflection\Types\Integer;
 use function PHPSTORM_META\type;
+use SebastianBergmann\CodeCoverage\Report\Text;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -70,6 +69,30 @@ class PlayerType extends AbstractType
                     ]
                 ])
 
+            ->add('password',
+                // 2 champs qui doivent avoir la même valeur
+                RepeatedType::class,
+                [
+                    // ...de type password
+                    'type' => PasswordType::class,
+                    // options du 1er champ
+                    'first_options' => [
+                        'label' => false,
+                        'attr' => ['placeholder' => 'Mot de passe',
+                            'class' => 'input']
+
+                    ],
+                    // options du 2nd champ
+                    'second_options' => [
+                        'label' => false,
+                        'attr' => ['placeholder' => 'Confirmation du mot de passe',
+                            'class' => 'input']
+                    ],
+                    // message si les 2 champs n'ont pas la même valeur
+                    'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
+                ]
+            )
+
            // ->add('card',
              //   EntityType::class,
                // [
@@ -79,31 +102,14 @@ class PlayerType extends AbstractType
                     
                //  ])
 
-               ->add('score', IntegerType::class,
+               ->add('score', TextType::class,
               [ 'label' => false,
+                  'required' => false,
                   'attr' => [
-        'class' => 'input'
-    ]])
-
-           ->add('streetNumber',
-               IntegerType::class,
-               [
-
-                   'label' => false,
-                   'required' => false,
-                   'attr' => ['placeholder' => 'Numéro',
-                       'class' => 'input']
-
-               ])
-
-            ->add('streetName',
-               TextType::class,
-               [
-                   'label' => false,
-                   'required' => false,
-                   'attr' => ['placeholder' => 'Rue',
-                       'class' => 'input']
-               ])
+                            'class' => 'input'
+                    ]
+              ]
+           )
 
             ->add('zip',
                 TextType::class,

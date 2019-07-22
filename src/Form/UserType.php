@@ -3,9 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use Doctrine\DBAL\Types\IntegerType;
-use mysql_xdevapi\BaseResult;
-use function Sodium\library_version_major;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -72,9 +69,6 @@ class UserType extends AbstractType
                  'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
              ]
          )
-
-            ->add('score',
-        IntegerType::class)
 
             ->add('phone',
                 TelType::class,

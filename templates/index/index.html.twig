@@ -62,20 +62,20 @@
 
 
 
-{% if is_granted('ROLE_USER')  %}
+{% if is_granted('ROLE_USER') %}
 
 
 <table class="table notification example-wrapper">
         <tr>
             <th>score</th>
             <th>victory</th>
-            <th>date</th>
+
             <th width="250px"></th>
         </tr>
             <tr>
+                <td> {{ app.user.score }} </td>
                 <td> ------</td>
-                <td> ------</td>
-                <td> ------</td>
+
                 <td>
 
                     <a href="{{ path('requestcard') }}"  
