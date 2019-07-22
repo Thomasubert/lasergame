@@ -32,7 +32,6 @@
         {% endif %}
 
 
-
     <table class="table">
 
         <tr>
@@ -42,53 +41,34 @@
             <th>Prénom</th>
             <th width="250px"></th>
         </tr>
-        {% if card is empty %}
-            <td>La carte n'existe pas</td>
-        {% endif %}
-        {% for c in card %}
+        {% if card is defined %}
+            {% if card  is empty %}
+                <td>La carte n'existe pas</td>
+        {% else %}
             <tr>
                 <td>{{ card[0].getCodeCard() }}</td>
                 <td>{{ card[0].getStatus()}} </td>
-                {% if rowuser is defined %}
-                <td> {{  rowuser.getLastname()}} </td>
-                <td> {{  rowuser.getFirstname()}} </td>
-                    <td>
-                        <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
-                           class="btn btn-primary">
-                            Activer
-                        </a>
-                        <a href="{{ path('app_admin_card_delete', {'id': c.id}) }}"
-                           class="btn btn-danger">
-                            Supprimer
-                        </a>
-                    </td>
-                {% else %}
-                    <td> - - -  </td>
-                    <td> - - -</td>
-                    <td>
-                        <a href="{{ path('app_admin_card_edit', {'id': c.id}) }}"
-                           class="btn btn-primary">
-                            Attribué
-                        </a>
-                        <a href="{{ path('app_admin_card_delete', {'id': c.id}) }}"
-                           class="btn btn-danger">
-                            Supprimer
-                        </a>
-                    </td>
-                {% endif %}
+                <td>{{ card[0].getUser()}} </td>
+                <td>{{ card[0].getUser()}} </td>
+                <td>
+                    <a href="{{ path('app_admin_card_edit', {'id': card[0].getId()}) }}"
+                       class="btn btn-primary">
+                        Modifier
+                    </a>
+                    <a href="{{ path('app_admin_card_delete', {'id': card[0].getId()}) }}"
+                       class="btn btn-danger">
+                        Supprimer
+                    </a>
                 </td>
                 <br>
             </tr>
-        {% endfor %}
+        {% endif %}
     </table>
+        {% endif %}
 
-{#{{dump(rowuser)}}#}
 
 {% endblock %}
 
 {% block javascript %}
 
 {% endblock %}
-
-
-

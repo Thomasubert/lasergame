@@ -80,15 +80,41 @@
                             </a>
                         </td>
                     </tr>
-
                 {% endif %}
-            {% else %}
-                <tr>
-                    <td colspan="5" class="text-center">
-                        Aucun résultat
-                    </td>
-                </tr>
             {% endfor %}
+            {% for key,card in cards %}
+                    {% if card.user is null%}
+                    <tr>
+                         <td>{{ card.codeCentre }}</td>
+                         <td>{{ card.codeCard }}</td>
+                         <td>{{ card.checksum }}</td>
+                         <td>- - -</td>
+                         <td>- - -</td>
+                         <td>{{ card.status }}</td>
+                         <td>{{ card.numberOfGames }}</td>
+                         <td>
+                             {% if card.getStatus()=="libre" %}
+                                 <a href="{{ path('requestcardactiveadmin', {'id': card.id}) }}"
+                                class="btn btn-primary">
+                                 Attribué
+                                 </a>
+                             {% endif %}
+                        <td>
+                            <a href="{{ path('app_admin_card_delete', {'id': card.id}) }}"
+                               class="btn btn-danger">
+                                Supprimer
+                            </a>
+                        </td>
+                     <tr>
+                    {% endif %}
+            {% endfor %}
+                {% if cards is empty%}
+            <tr>
+                <td colspan="5" class="text-center">
+                    Aucun résultat
+                </td>
+            </tr>
+            {% endif %}
         </table>
 
     </div>
