@@ -3,7 +3,12 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;  
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\HeaderUtils;
+use App\Operation\UserPublishingHandler;
+use App\Entity\User;
 
 /**
  * Class ApiController
@@ -14,6 +19,26 @@ class ApiController extends AbstractController
 {
 
     private $userPublishingHandler;
+    public $cc;
+
+    public function __construct(UserPublishingHandler $userPublishingHandler)
+    {
+        $this->productPublishingHandler = $userPublishingHandler;
+    }
+
+    public function __invoke(User $data): User
+    {
+        //
+        //  ici, on fait ce que l'on veut avec les données
+        //  il est recommandé de faire appel à un handler pour traiter les donnés comme on veut
+        $this->cc=$this->userPublishingHandler->handle($data);
+        //
+        //
+
+        return $data;
+    }
+
+
     /**
      * @Route("/")
      */
@@ -23,6 +48,19 @@ class ApiController extends AbstractController
         return $this->redirect(
             'users'
         );
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/users",name="users")
+     */
+    public function users()
+    {
+      dd( $this->cc);
+
+        return $this->render('api/index.html.twig');
+
     }
 
 
