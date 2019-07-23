@@ -41,30 +41,4 @@ class ApiController extends AbstractController
 
     
 
-    public function __invoke(User $data): User
-    {
-        //
-        //  ici, on fait ce que l'on veut avec les données
-        //  il est recommandé de faire appel à un handler pour traiter les donnés comme on veut
-        $this->cc=$this->userPublishingHandler->handle($data);
-        //
-        //
-
-        return $data;
-    }
-
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/users",name="users")
-     */
-    public function users()
-    {
-      dd( $this->cc);
-
-        return $this->render('api/index.html.twig');
-
-    }
-
-
 }
