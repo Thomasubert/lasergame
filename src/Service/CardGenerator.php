@@ -1,12 +1,9 @@
 <?php
 
-
 namespace App\Service;
-
 
 class CardGenerator
 {
-
     private $codeCentre = 123;
     private $codeCarte = 0;
     private $checkMod = 0;
@@ -19,15 +16,10 @@ class CardGenerator
      */
     public function generate(int $numberDigit): iterable
     {
-
-        # Generate card code
         $this->codeCarte = $this->intCodeRandom($numberDigit);
 
-
-        # Check modulo
         $this->checkMod = ($this->codeCentre + $this->codeCarte) % 9;
 
-        # Return card code
         return [
             'card_number' => $this->codeCentre . $this->codeCarte . $this->checkMod,
             'codeCentre' => $this->codeCentre,

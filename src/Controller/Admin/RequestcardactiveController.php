@@ -19,7 +19,6 @@ use App\Form\RespcardactiveType;
 class RequestcardactiveController extends AbstractController
 {
 
-
     /**
      * @param EntityManagerInterface $em
      * return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -42,7 +41,6 @@ class RequestcardactiveController extends AbstractController
         ]);
     }
 
-
     public function delete(EntityManagerInterface $em, Card $card)
     {
         $em->remove($card);
@@ -55,7 +53,6 @@ class RequestcardactiveController extends AbstractController
         return $this->redirectToRoute(
             'app_admin_card_index'
         );
-
     }
 
     /**
@@ -87,23 +84,16 @@ class RequestcardactiveController extends AbstractController
                     $this->addFlash('success', 'La carte est activée');
                     $flag=1;
                     break;
-
                 }
             }
+
         if($flag==0) $this->addFlash('success', 'Code carte invalide');
         }
         else
         {
-
             $this->addFlash('success', 'Code carte invalide');
-
-
-
         }
-
 
         return $this->render('index/index.html.twig');  
     }
-
-
 }

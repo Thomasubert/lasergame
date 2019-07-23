@@ -25,14 +25,9 @@
         </tr>
         {% for game in games %}
             <tr>
-
                 <td>{{ game.name }}</td>
                 <td>{{ game.score }}</td>
-
                 <td>
-
-
-
                     <a href="{{ path('app_game_edit', {'id': game.id}) }}"
                        class="btn btn-primary">
                         Modifier

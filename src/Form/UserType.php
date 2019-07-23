@@ -133,8 +133,6 @@ class UserType extends AbstractType
                     'attr' => ['placeholder' => 'Pays',
                         'class' => 'input']
                 ])
-
-
         ;
     }
 

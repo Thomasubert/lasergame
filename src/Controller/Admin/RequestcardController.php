@@ -26,7 +26,6 @@ class RequestcardController extends AbstractController
      */
     public function index(EntityManagerInterface $em,CardRepository $cardRepository, $id)
     {
-
         $this->addFlash('success', 'User sans carte');
 
         $cards = $cardRepository->findAll();
@@ -48,8 +47,6 @@ class RequestcardController extends AbstractController
         $cards = $cardRepository->findAll();
         $result = $em->find(User::class, $id);
 
-
-
         if($checkCardFree=$cardRepository->findFreeCard()==false)
         {
             $this->addFlash('success', 'Les cartes sont indisponible en stock, le joueur est enregistré');
@@ -57,7 +54,6 @@ class RequestcardController extends AbstractController
             return $this->render('admin/index.html.twig', [
                 'users' => $users
             ]);
-
         }
 
         foreach ($cards as $key => $value) {
@@ -69,19 +65,12 @@ class RequestcardController extends AbstractController
                   $em->flush();
                   break;
             }
-
         }
 
         $this->addFlash('success', 'La carte est attribué');
         return $this->render('admin/index.html.twig', [
             'users' => $users
         ]);
-
-
-
     }
-
-
-
 }
 

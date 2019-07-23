@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 /**
  * Class UserController
  * @package App\Controller
@@ -38,8 +37,6 @@ class UserController extends AbstractController
             'users' => $users,
         ]);
     }
-
-
 
     /**
      * @param Request $request
@@ -86,7 +83,6 @@ class UserController extends AbstractController
         );
     }
 
-
     /**
      * @param EntityManagerInterface $em
      * @param User $user
@@ -101,6 +97,4 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index');
     }
-
-
 }

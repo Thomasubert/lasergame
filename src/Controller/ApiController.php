@@ -12,18 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ApiController extends AbstractController
 {
-
     private $userPublishingHandler;
     /**
      * @Route("/")
      */
     public function index()
     {
-
         return $this->redirect(
             'users'
         );
     }
-
-
 }

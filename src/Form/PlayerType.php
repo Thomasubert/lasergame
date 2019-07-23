@@ -3,14 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Address;
-use App\Entity\Card;
 use App\Entity\User;
-use function PHPSTORM_META\type;
-use SebastianBergmann\CodeCoverage\Report\Text;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -31,8 +26,6 @@ class PlayerType extends AbstractType
 
                         'attr' => ['placeholder' => 'Mail',
                             'class' => 'input']
-
-
                 ])
             ->add('lastname',
                 TextType::class,
@@ -90,17 +83,7 @@ class PlayerType extends AbstractType
                     ],
                     // message si les 2 champs n'ont pas la même valeur
                     'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
-                ]
-            )
-
-           // ->add('card',
-             //   EntityType::class,
-               // [
-                 //   'class' => Card::class,
-                   // 'label' => 'Numéro de carte du joueur',
-                   // 'required' => false
-                    
-               //  ])
+                ])
 
                ->add('score', TextType::class,
               [ 'label' => false,
@@ -108,8 +91,7 @@ class PlayerType extends AbstractType
                   'attr' => [
                             'class' => 'input'
                     ]
-              ]
-           )
+              ])
 
             ->add('zip',
                 TextType::class,

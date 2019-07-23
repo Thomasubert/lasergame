@@ -2,15 +2,14 @@
 
 {% block title %}Activer la carte!!!{% endblock %}
 
-
 {% block body %}
     <h1>Activer la carte</h1>
           {{ form_start(form) }}
     <table>
       <tr>
-      <th>{{ form_row(form.keycenter) }}</th>
-    --<th>{{ form_row(form.keycard) }}</th>
-    --<th>{{ form_row(form.checksum) }}</th>
+          <th>{{ form_row(form.keycenter) }}</th>
+          <th>{{ form_row(form.keycard) }}</th>
+          <th>{{ form_row(form.checksum) }}</th>
      </tr>
     </table>
         <div class="text-right">
@@ -23,7 +22,5 @@
        class="btn btn-outline-secondary">
         Retour
     </a>
-
-
 
 {% endblock %}

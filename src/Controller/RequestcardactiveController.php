@@ -68,16 +68,8 @@ class RequestcardactiveController extends AbstractController
         }
         else
         {
-
             $this->addFlash('success', 'Code carte invalide');
-
-
-
         }
-
-
         return $this->render('index/index.html.twig');  
     }
-
-
 }

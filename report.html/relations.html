@@ -50,7 +50,7 @@
 <div class="page">
     <div class="content">
         <div class="report-details">
-            Created at 2019-07-22 16:07:40        , with PHPMetrics v2.2.0 (<a href="https://twitter.com.Halleck45">Jean-François Lépine</a>).
+            Created at 2019-07-23 11:32:48        , with PHPMetrics v2.2.0 (<a href="https://twitter.com.Halleck45">Jean-François Lépine</a>).
         </div>
 
 
@@ -1313,6 +1313,14 @@
         ]
     },
     {
+        "name": "\\App\\Controller\\ApiController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\Routing\\Annotation\\Route"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\ConnexionController",
         "size": 3000,
         "relations": [
@@ -1417,9 +1425,9 @@
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\App\\Repository\\CardRepository",
             "\\App\\Repository\\UserRepository",
-            "\\Symfony\\Component\\Routing\\Annotation\\Route",
-            "\\App\\Repository\\CardRepository"
+            "\\Symfony\\Component\\Routing\\Annotation\\Route"
         ]
     },
     {
@@ -1535,14 +1543,6 @@
     },
     {
         "name": "\\App\\Form\\SearchCardType",
-        "size": 3000,
-        "relations": [
-            "\\Symfony\\Component\\Form\\AbstractType",
-            "\\Symfony\\Component\\Form\\FormBuilderInterface"
-        ]
-    },
-    {
-        "name": "\\App\\Form\\SearchUserType",
         "size": 3000,
         "relations": [
             "\\Symfony\\Component\\Form\\AbstractType",

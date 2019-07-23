@@ -27,21 +27,9 @@ class CardRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('u');
 
-        //$qb->orderBy('u.lastname', 'DESC');
-
-        //if (!empty($criteria['user'])) {
         $qb
             ->where('u.codeCard = :codeCard')
             ->setParameter('codeCard', $criteria['codeCard']);
-
-        //}
-
-
-        //$query = $qb->getQuery();
-
-        //dump($query->getSQL());
-
-        //$qb->orderBy('u.lastname', 'DESC');
 
         return $qb
             ->getQuery()
@@ -55,22 +43,6 @@ class CardRepository extends ServiceEntityRepository
             ->setParameter(':customerCode', 'libre');
         return (boolean)$qb->getQuery()->getResult();
     }
-    // /**
-    //  * @return Card[] Returns an array of Card objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
 
     public function findOneBySomeField($value): ?Card
@@ -82,5 +54,4 @@ class CardRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-
 }

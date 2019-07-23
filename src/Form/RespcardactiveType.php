@@ -31,7 +31,6 @@ class RespcardactiveType extends AbstractType
                             'message' => "Le code centre est obligatoire"
                         ])
                     ]
-
                 ])
             ->add('keycard')
             ->add('checksum')

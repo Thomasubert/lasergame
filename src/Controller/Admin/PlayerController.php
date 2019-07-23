@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controller\Admin;
-
 
 use App\Entity\User;
 use App\Form\PlayerType;
@@ -24,7 +22,6 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
  */
 class PlayerController extends AbstractController
 {
-
     /**
      * @Route("/")
      */
@@ -47,7 +44,6 @@ class PlayerController extends AbstractController
                           EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder,
                           $id)
     {
-
         if (is_null($id)){
             $user = new User();
         } else {
@@ -104,5 +100,4 @@ class PlayerController extends AbstractController
 
         return $this->redirectToRoute('app_admin_player_index');
     }
-
 }

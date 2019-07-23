@@ -22,20 +22,15 @@ class RequestcardController extends AbstractController
      */
     public function index(AuthenticationUtils $authenticationUtils,EntityManagerInterface $em,CardRepository $cardRepository)
     {
-
-        //  $objAssign->AssignedDirection($cardRepository,$user);
-
             $cards=$cardRepository->findAll();
 
             $lastUsername = $authenticationUtils->getLastUsername();
 
-           // dd($this->getUser()->getCard()->getStatus());
         if($checkCardFree=$cardRepository->findFreeCard()==false)
         {
             $this->addFlash('success', 'Les cartes sont indisponible en stock');
 
             return $this->redirectToRoute('redirectRequesttouserhome');
-
         }
 
          if($this->getUser()->getCard()==null)
@@ -48,7 +43,6 @@ class RequestcardController extends AbstractController
                      $this->getUser()->setCard($value);
                      break;
                  }
-
              }
              $em->persist($this->getUser());
              $em->flush();
@@ -56,19 +50,14 @@ class RequestcardController extends AbstractController
              $this->addFlash('success', 'La demande de la carte a été énregistrée');
 
              return $this->redirectToRoute('redirectRequesttouserhome');
-
          }
 
          elseif($this->getUser()->getCard()->getStatus()=="attribué")
             {
-
                 $this->addFlash('success', 'Vous avez déjà une demande de carte en attente');
 
                 return $this->redirectToRoute('redirectRequesttouserhome');
-
             }
-
-
     }
 
     /**
@@ -77,7 +66,6 @@ class RequestcardController extends AbstractController
      */
     public function redirectRequesttouserhome()
     {
-
         return $this->render('index/index.html.twig');  
     }
 }

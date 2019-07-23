@@ -39,7 +39,6 @@ class GameController extends AbstractController
         ]);
     }
 
-
     /**
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -82,7 +81,6 @@ class GameController extends AbstractController
         ]
         );
     }
-
 
     /**
      * @param EntityManagerInterface $em
