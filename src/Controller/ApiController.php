@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route;  
 
 /**
  * Class ApiController
@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ApiController extends AbstractController
 {
+
+    private $userPublishingHandler;
     /**
      * @Route("/")
      */
@@ -22,4 +24,6 @@ class ApiController extends AbstractController
             'users'
         );
     }
+
+
 }

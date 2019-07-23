@@ -9,7 +9,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello! ✅</h1>
 
     This friendly message is coming from:
     <ul>
@@ -17,4 +17,23 @@
         <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/lasergame/templates/api/index.html.twig'|file_link(0) }}">templates/api/index.html.twig</a></code></li>
     </ul>
 </div>
+{% endblock %}
+{% block javascripts %}
+
+
+    <script
+
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+
+            crossorigin="anonymous"></script>
+
+    <script src="{{ asset('lib/bootstrap/bootstrap.min.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script>
+
+    </script>
+
 {% endblock %}
