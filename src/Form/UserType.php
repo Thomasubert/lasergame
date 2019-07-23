@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use mysql_xdevapi\BaseResult;
-use function Sodium\library_version_major;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;

@@ -132,7 +132,8 @@
                             Bonjour  {{ app.user }}
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 <span class="icon is-medium">
-                         Bonjour  {{ app.user }}            
+                         Bonjour  {{ app.user }}
+
                         <a href="{{ path('app_connexion_logout') }}" title="Déconnexion">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
@@ -151,6 +152,10 @@
 </div>
 
 {% block body %}
+
+
+        
+
     <table class="table">
         <tr>
             <th>score</th>
@@ -158,8 +163,10 @@
             <th>date</th>
             <th width="250px"></th>
         </tr>
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <tr>
-                <td> ------</td>
+                <td> {{ app.user.score }}</td>
                 <td> ------</td>
                 <td> ------</td>
                 <td>
@@ -176,6 +183,9 @@
                 </td>
 
             </tr>
+
+{% endif %}
+
 
 
 

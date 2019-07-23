@@ -103,6 +103,11 @@ class User implements UserInterface
      */
     private $games;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $score;
+
     public function __construct()
     {
         $this->games = new ArrayCollection();
@@ -332,6 +337,18 @@ class User implements UserInterface
             $this->games->removeElement($game);
             $game->removeUser($this);
         }
+
+        return $this;
+    }
+
+    public function getScore(): ?string
+    {
+        return $this->score;
+    }
+
+    public function setScore(?string $score): self
+    {
+        $this->score = $score;
 
         return $this;
     }
