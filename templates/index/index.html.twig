@@ -67,22 +67,44 @@
             <th>score</th>
             <th>victory</th>
 
-            <th width="250px"></th>
+            <th class="space"></th>
         </tr>
             <tr>
+
+    {% if app.user.getCard() %}
+        {% if app.user.getCard().getStatus() =="active" %}
+
                 <td> {{ app.user.score }} </td>
+
+                {% endif %}
+        {% endif %}
+
+
+                {{ dump(app.user.getCard()) }}
+
                 <td> ------</td>
+                <th width="250px"></th>
 
                 <td>
 
-                    <a href="{{ path('requestcard') }}"  
+
+    {% if app.user.getCard() == null %}
+
+        <a href="{{ path('requestcard') }}"
                        class="button is-info">
-                         Demander une carte !
+                         Demander une carte!
                     </a>
+        {% endif %}
+
+
+    {% if app.user.getCard() =="true" %}
+    {% if app.user.getCard().getStatus() =="attribué" %}
                     <a href="{{ path('requestcardactive') }}"
                        class="button is-danger">
                         Activer la carte !
                     </a>
+        {% endif %}
+        {% endif %}
                 </td>
 
             </tr>
