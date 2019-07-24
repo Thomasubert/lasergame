@@ -94,17 +94,16 @@
                        class="button is-info">
                          Demander une carte!
                     </a>
+
+        {% else %}
+            <a href="{{ path('requestcardactive') }}"
+               class="button is-danger">
+                Activer la carte !
+            </a>
+
         {% endif %}
 
 
-    {% if app.user.getCard() =="true" %}
-    {% if app.user.getCard().getStatus() =="attribué" %}
-                    <a href="{{ path('requestcardactive') }}"
-                       class="button is-danger">
-                        Activer la carte !
-                    </a>
-        {% endif %}
-        {% endif %}
                 </td>
 
             </tr>
