@@ -11,10 +11,11 @@
 <div class="example-wrapper">
     <h1>Hello! ✅</h1>
 
-    This friendly message is coming from:
+
     <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/lasergame/src/Controller/ApiController.php'|file_link(0) }}">src/Controller/ApiController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/lasergame/templates/api/index.html.twig'|file_link(0) }}">templates/api/index.html.twig</a></code></li>
+        {% for user in users %}
+            <li>{{ user.firstname }}</li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}

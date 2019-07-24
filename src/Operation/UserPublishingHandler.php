@@ -5,7 +5,7 @@ namespace App\Operation;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
-use App\Controller\ApiController;
+use App\Controller\GamersController;
 
 
 class UserPublishingHandler

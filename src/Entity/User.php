@@ -8,12 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Controller\ApiController;
+use App\Controller\GamersController;
 use App\Operation\UserPublishingHandler;
 
 /**
  *
- * @ApiResource(attributes={"formats"={"jsonld", "csv"={"text/csv"}}})
+ * @ApiResource(attributes={"formats"={"json", "csv"={"text/csv"}}})
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="Cet email existe déjà")
  */
