@@ -9,11 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-
+    {% if is_granted('ROLE_ADMIN')  %}
     <a href="{{ path('app_game_edit') }}"
        class="button btn-outline-primary mb-3">
         Ajouter un jeu
     </a>
+    {% endif %}
 
     <br><br>
 
