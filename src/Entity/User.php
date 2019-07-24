@@ -9,7 +9,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Controller\GamersController;
-use App\Operation\UserPublishingHandler;
 
 /**
  *
@@ -109,6 +108,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @ORM\OrderBy({"order" = "DESC"})
      */
     private $score;
 
