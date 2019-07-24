@@ -42,29 +42,22 @@ class RequestcardactiveController extends AbstractController
 
         $lastUsername = $authenticationUtils->getLastUsername();
 
+       // dd($this->getUser()->getCard()->getStatus()=="attribué");
 
-        if(is_null($this->getUser()->getCard())) {
-           // dd($cards->getCodeCentre());
-        $flag=0;
-            foreach ($cards as $key => $value) {
+        if($this->getUser()->getCard()->getStatus()=="attribué")
+        {
+            if (($request->request->get('respcardactive')["keycenter"] == $this->getUser()->getCard()->getCodeCentre())
+                && ($request->request->get('respcardactive')["keycard"] == $this->getUser()->getCard()->getcodeCard())
+                && ($request->request->get('respcardactive')["checksum"] == $this->getUser()->getCard()->getChecksum()))
+            {
+               // $this->getUser()->setCard()->setStatus("active");
+                $this->getUser()->getCard()->setStatus("active");
+                //dd($this->getUser()->getCard()->getStatus("active"));
+                $em->persist($this->getUser());
+                $em->flush();
+                $this->addFlash('success', 'La carte est activée');
 
-                if (($request->request->get('respcardactive')["keycenter"] == $value->getCodeCentre())
-                    && ($request->request->get('respcardactive')["keycard"] == $value->getcodeCard())
-                    && ($request->request->get('respcardactive')["checksum"] == $value->getChecksum())
-                    && ($value->getStatus() == "attribué")) {
-
-                    $value->setStatus("active");
-                    $this->getUser()->setCard($value);
-
-                    $em->persist($this->getUser());
-                    $em->flush();
-                    $this->addFlash('success', 'La carte est activée');
-                    $flag=1;
-                    break;
-
-                }
             }
-        if($flag==0) $this->addFlash('success', 'Code carte invalide');
         }
         else
         {

@@ -28,7 +28,7 @@ class RequestcardController extends AbstractController
 
         if($checkCardFree=$cardRepository->findFreeCard()==false)
         {
-            $this->addFlash('success', 'Les cartes sont indisponible en stock');
+            $this->addFlash('success', 'Les cartes ne sont disponible en stock');
 
             return $this->redirectToRoute('redirectRequesttouserhome');
         }
