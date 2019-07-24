@@ -8,12 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Controller\ApiController;
-use App\Operation\UserPublishingHandler;
+use App\Controller\GamersController;
 
 /**
  *
- * @ApiResource(attributes={"formats"={"jsonld", "csv"={"text/csv"}}})
+ * @ApiResource(attributes={"formats"={"json", "csv"={"text/csv"}}})
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="Cet email existe déjà")
  */
@@ -109,6 +108,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @ORM\OrderBy({"order" = "DESC"})
      */
     private $score;
 
