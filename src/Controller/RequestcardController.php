@@ -27,9 +27,8 @@ class RequestcardController extends AbstractController
 
             $cards=$cardRepository->findAll();
 
-            $lastUsername = $authenticationUtils->getLastUsername();
+          //  $lastUsername = $authenticationUtils->getLastUsername();
 
-           // dd($this->getUser()->getCard()->getStatus());
         if($checkCardFree=$cardRepository->findFreeCard()==false)
         {
             $this->addFlash('success', 'Les cartes ne sont disponible en stock');
@@ -42,7 +41,6 @@ class RequestcardController extends AbstractController
          {
              foreach ($cards as $key => $value) {
 
-                 //dd($this->getUser()->getCard()!=null);
                  if ($value->getStatus() == "libre") {
                      $value->setStatus("attribué");
                      $this->getUser()->setCard($value);
