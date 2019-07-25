@@ -4,34 +4,36 @@
 namespace App\Card;
 
 
+use App\Entity\Card;
+use Twig\Environment;
+
 class Mailing
 {
-    public function index($name, \Swift_Mailer $mailer)
+    private $mailer, $twig;
+    public function __construct(\Swift_Mailer $mailer, Environment $twig)
     {
-        $message = (new \Swift_Message('Hello Email'))
-            ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
+        $this->mailer = $mailer;
+        $this->twig = $twig;
+    }
+    public function index(Card $card)
+    {
+        $message = (new \Swift_Message('Activation d\'une carte'))
+            ->setFrom('laser@game.com')
+            ->setTo($card->getUser()->getEmail())
             ->setBody(
-                $this->renderView(
+                $this->twig->render(
                 // templates/emails/registration.html.twig
-                    'emails/registration.html.twig',
-                    ['name' => $name]
+                    'emails/card_activation.html.twig',
+                    ['name' => $card->getUser()->getFirstname()]
                 ),
                 'text/html'
             )
 
-            // you can remove the following code if you don't define a text version for your emails
-            ->addPart(
-                $this->renderView(
-                    'emails/registration.txt.twig',
-                    ['name' => $name]
-                ),
-                'text/plain'
-            )
+
         ;
 
-        $mailer->send($message);
+        $this->mailer->send($message);
 
-        return $this->render(...);
+
     }
 }
