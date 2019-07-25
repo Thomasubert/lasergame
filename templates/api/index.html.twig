@@ -41,7 +41,7 @@
             <th>score</th>
         </tr>
         {% set nr = 1 %}
-        {% for user in users if user.score  %}
+        {% for user in users if user.score and nr<11 %}
         <tr>
             <td>{{ nr }}</td>
             <td>{{ user.firstname }}</td>
