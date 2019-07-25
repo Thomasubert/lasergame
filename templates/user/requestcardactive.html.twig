@@ -14,9 +14,15 @@
      </tr>
     </table>
         <div class="text-right">
-            <button type="submit" class="btn btn-primary">
-                Enregistrer
-            </button>
+            {% if workflow_can(card, 'active') %}
+                <a href="{{ path('card_workflow', {'id': card.id,
+                    'state' : 'active',
+                    'redirect' : app.request('_route')}) }}"
+                   class="btn btn-primary">
+                    Enregistrer
+                </a>
+            {% endif %}
+
         </div>
     {{ form_end(form) }}
     <a href="{{ path('userhome') }}"

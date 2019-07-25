@@ -88,12 +88,15 @@
                 <td>
 
 
-    {% if app.user.getCard() == null %}
+                    {% if workflow_can(card, 'create') %}
+                        <a href="{{ path('card_workflow', {'id': card.id,
+                            'state' : 'create',
+                            'redirect' : app.request('_route')}) }}"
+                           class="btn btn-primary">
+                            Demander une carte !
+                        </a>
+                    {% endif %}
 
-        <a href="{{ path('requestcard') }}"
-                       class="button is-info">
-                         Demander une carte !
-                    </a>
                     {% if worflow_can(card, 'active') %}
                     <a href="{{ path('card_workflow', {
                         'id' : card.id,

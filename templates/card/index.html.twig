@@ -57,7 +57,8 @@
                         <td>
                            {% if workflow_can(card, 'active') %}
                                 <a href="{{ path('card_workflow', {'id': card.id,
-                                'state' : 'active'}) }}"
+                                'state' : 'active',
+                                'redirect' : app.request('_route')}) }}"
                                    class="btn btn-primary">
                                     Activer
                                 </a>

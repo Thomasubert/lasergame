@@ -56,4 +56,19 @@ class CardRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * Récupérer tous les articles par Statut
+     * @param string $state
+     * @return mixed
+     */
+    public function findCardByState(string $state)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.state LIKE :state')
+            ->setParameter('state', "%$state%")
+            ->orderBy('c.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

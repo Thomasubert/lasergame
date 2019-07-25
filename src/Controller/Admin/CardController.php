@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Workflow\Exception\LogicException;
 
 /**
  * Class CardController
@@ -176,6 +177,7 @@ class CardController extends AbstractController
         }catch (LogicException $e){
             $this->addFlash('error', 'changement de status impossible');
         }
+
 
         return $this->redirectToRoute('app_admin_card_index');
     }
