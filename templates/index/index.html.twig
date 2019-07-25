@@ -95,7 +95,7 @@
                          Demander une carte!
                     </a>
 
-        {% else %}
+        {% elseif app.user.getCard().getStatus() !="active" %}
             <a href="{{ path('requestcardactive') }}"
                class="button is-danger">
                 Activer la carte !
