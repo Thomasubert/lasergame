@@ -21,3 +21,8 @@
 .idea/modules.xml
 .idea/php.xml
 .idea/workspace.xml
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###

@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use mysql_xdevapi\BaseResult;
-use function Sodium\library_version_major;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -83,7 +81,7 @@ class UserType extends AbstractType
             ->add('birthdate',
                 BirthdayType::class,
                 [
-                    'label' => 'Date de naissance du joueur',
+                    'label' => false,
                     'required' => false,
                     'widget' => 'choice',
                     'format' => 'dd/MM/yyyy',
@@ -135,8 +133,6 @@ class UserType extends AbstractType
                     'attr' => ['placeholder' => 'Pays',
                         'class' => 'input']
                 ])
-
-
         ;
     }
 

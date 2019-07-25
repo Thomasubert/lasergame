@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controller\Admin;
-
 
 use App\Entity\User;
 use App\Form\PlayerType;
@@ -14,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 /**
  * Class PlayerController
@@ -23,7 +22,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class PlayerController extends AbstractController
 {
-
     /**
      * @Route("/")
      */
@@ -46,7 +44,6 @@ class PlayerController extends AbstractController
                           EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder,
                           $id)
     {
-
         if (is_null($id)){
             $user = new User();
         } else {
@@ -68,13 +65,17 @@ class PlayerController extends AbstractController
                 );
 
                 $user->setPassword($password);
-
                 $em->persist($user);
                 $em->flush();
 
                 $this->addFlash('success', 'Le joueur est enregistré');
 
-                return $this->redirectToRoute('app_admin_player_edit');
+                return $this->render('/admin/cardoption.html.twig',
+                    [
+
+                        'createuser' => $user
+                    ]
+                );
             } else {
                 $this->addFlash('error', 'Le formulaire contient des erreurs');
             }

@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ parent() }} - Log in!{% endblock %}
 
 {% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <br><br><br><br><br>
+    <div class="box example-wrapper">
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
     <div class="field">
     <label for="inputEmail" class="label">Email</label>
@@ -21,9 +25,9 @@
     </div>
 
     <div class="field">
-    <label for="inputPassword" class="label">Password</label>
+    <label for="inputPassword" class="label">Mot de passe</label>
         <p class="control has-icons-left">
-    <input type="password" name="password" id="inputPassword" class="input" placeholder="Password" required>
+    <input type="password" name="password" id="inputPassword" class="input" placeholder="Mot de passe" required>
             <span class="icon is-small is-left">
       <i class="fas fa-lock"></i>
     </span>
@@ -32,19 +36,31 @@
     >
         </p>
     </div>
-
+    <br>
         <div class="checkbox mb-3">
             <label>
-                <input id="remember_me" type="checkbox" name="_remember_me"> Remember me
+                <input id="remember_me" type="checkbox" name="_remember_me"> Se souvenir de moi
             </label>
         </div>
+    <br><br>
 
-
-    <div class="control">
+    <div class="control" style="text-align: right;">
     <button class="button is-primary" type="submit">
-        Sign in
+        Connexion
     </button>
     </div>
 
 </form>
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
 {% endblock %}

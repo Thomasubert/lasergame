@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CardController!{% endblock %}
+{% block title %}{{ parent() }} - Joueurs/Cartes{% endblock %}
 
 {% block body %}
 
@@ -19,19 +19,20 @@
     </style>
 
     <div class="example-wrapper">
-
-        <h1>Cartes</h1>
+        <br>
+        <h1 class="title is-1 has-text-white">Cartes</h1>
+        <br>
 
         <a href="{{ path('app_search_searchcard') }}"
-           class="btn btn-outline-primary mb-3">
+           class="button is-light mb-3">
             Recherche une carte
-        </a> <br/>
-        <a href="{{ path('app_admin_card_edit') }}"
-           class="btn btn-outline-primary mb-3">
-            Ajouter une carte
-        </a> <br/>
+        </a>
 
-        {#{{ dump(cards[5].getUser().getLastname()) }}#}
+        <a href="{{ path('app_admin_card_edit') }}"
+           class="button is-light mb-3">
+            Ajouter une carte
+        </a> <br> <br>
+
         <table class="table">
             <tr>
                 <th>Code Centre</th>
@@ -63,10 +64,7 @@
                                {% endif %}
 
                                 {% elseif card.getStatus()=="active" %}
-                                    <a href="#"
-                                       class="btn btn-primary">
-                                        Succès
-                                    </a>
+                                    <div style="color: green;">Activé</div>
                             {% else %}
                                 {% if workflow_can(card, 'affected') %}
                                 <a href="{{ path('card_workflow', {'id': card.id,
@@ -120,8 +118,6 @@
             </tr>
             {% endif %}
         </table>
-
     </div>
-
 
 {% endblock %}

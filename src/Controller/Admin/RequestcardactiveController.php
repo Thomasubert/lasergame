@@ -19,7 +19,6 @@ use App\Form\RespcardactiveType;
 class RequestcardactiveController extends AbstractController
 {
 
-
     /**
      * @param EntityManagerInterface $em
      * return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -27,7 +26,8 @@ class RequestcardactiveController extends AbstractController
      */
     public function index(AuthenticationUtils $authenticationUtils,EntityManagerInterface $em,CardRepository $cardRepository, $id)
     {
-          $result = $em->find(Card::class, $id);
+
+        $result = $em->find(Card::class, $id);
           //dd($result->getId());
           $result->setStatus("active");
           $em->persist($result);
@@ -40,9 +40,6 @@ class RequestcardactiveController extends AbstractController
             'cards' => $cards
         ]);
     }
-//@param EntityManagerInterface $em
-// @param Card $card
-//@return \Symfony\Component\HttpFoundation\RedirectResponse
 
     public function delete(EntityManagerInterface $em, Card $card)
     {
@@ -56,7 +53,6 @@ class RequestcardactiveController extends AbstractController
         return $this->redirectToRoute(
             'app_admin_card_index'
         );
-
     }
 
     /**
@@ -67,44 +63,29 @@ class RequestcardactiveController extends AbstractController
 
         $cards=$cardRepository->findAll();
 
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-
-        if(is_null($this->getUser()->getCard())) {
-           // dd($cards->getCodeCentre());
-        $flag=0;
-            foreach ($cards as $key => $value) {
-
-                if (($request->request->get('respcardactive')["keycenter"] == $value->getCodeCentre())
-                    && ($request->request->get('respcardactive')["keycard"] == $value->getcodeCard())
-                    && ($request->request->get('respcardactive')["checksum"] == $value->getChecksum())
-                    && ($value->getStatus() == "attribué")) {
-
-                    $value->setStatus("active");
-                    $this->getUser()->setCard($value);
-
-                    $em->persist($this->getUser());
-                    $em->flush();
-                    $this->addFlash('success', 'La carte est activée');
-                    $flag=1;
-                    break;
-
-                }
-            }
-        if($flag==0) $this->addFlash('success', 'Code carte invalide');
-        }
-        else
+        if($this->getUser()->getCard()->getStatus()=="attribué")
         {
+            if (($request->request->get('respcardactive')["keycenter"] == $this->getUser()->getCard()->getCodeCentre())
+                && ($request->request->get('respcardactive')["keycard"] == $this->getUser()->getCard()->getcodeCard())
+                && ($request->request->get('respcardactive')["checksum"] == $this->getUser()->getCard()->getChecksum()))
+            {
+                $this->getUser()->getCard()->setStatus("active");
+                //dd($this->getUser()->getCard()->getStatus("active"));
+                $em->persist($this->getUser());
+                $em->flush();
+                $this->addFlash('success', 'La carte est activée');
 
+            }
+
+        }
+
+        else {
             $this->addFlash('success', 'Code carte invalide');
 
-
-
         }
 
 
-        return $this->render('index/index.html.twig');  
+
+        return $this->render('index/index.html.twig');
     }
-
-
 }

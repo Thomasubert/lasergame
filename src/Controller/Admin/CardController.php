@@ -13,8 +13,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Workflow\Exception\LogicException;
-
 
 /**
  * Class CardController
@@ -23,7 +21,6 @@ use Symfony\Component\Workflow\Exception\LogicException;
  */
 class CardController extends AbstractController
 {
-
     /**
      * @param Request $request
      * @param EntityManagerInterface $em
@@ -41,8 +38,6 @@ class CardController extends AbstractController
             'users' => $users,
         ]);
     }
-
-
 
     /**
      * @param Request $request
@@ -73,7 +68,6 @@ class CardController extends AbstractController
         );
     }
 
-
     /**
      * @param EntityManagerInterface $em
      * @param Card $card
@@ -92,7 +86,6 @@ class CardController extends AbstractController
         return $this->redirectToRoute(
             'app_admin_card_index'
         );
-
     }
 
     /**

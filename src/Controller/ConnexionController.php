@@ -15,17 +15,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class ConnexionController extends AbstractController
 {
 
-
-
     /**
      * @Route("/déconnexion")
      */
 
     public function logout()
     {
-
     }
-
-
-
 }

@@ -1,15 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello User Index!{% endblock %}
+{% block title %}{{ parent() }}{% endblock %}
 
 {% block body %}
 
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-
     <div class="example-wrapper">
+
 <table class="table">
         <tr>
             <th>score</th>
@@ -17,8 +13,12 @@
             <th>date</th>
             <th width="250px"></th>
         </tr>
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+
             <tr>
-                <td> ------</td>
+                <td> {{ app.user.score }}</td>
                 <td> ------</td>
                 <td> ------</td>
                 <td>
@@ -35,6 +35,7 @@
                 </td>
 
             </tr>
+        {% endif %}
 
 
 {% if is_granted('ROLE_ADMIN')  %}
@@ -77,8 +78,6 @@
                 <td>{{ user.city }}</td>
                 <td>{{ user.country }}</td>
                 <td>
-
-
 
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}"
                        class="btn btn-primary">

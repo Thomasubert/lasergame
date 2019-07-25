@@ -1,15 +1,22 @@
 <?php
 namespace App\Entity;
+
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Controller\GamersController;
+
 /**
+ *
+ * @ApiResource(attributes={"formats"={"json", "csv"={"text/csv"}}})
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="Cet email existe déjà")
  */
+
 class User implements UserInterface
 {
     /**
@@ -98,6 +105,12 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="user")
      */
     private $games;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @ORM\OrderBy({"order" = "DESC"})
+     */
+    private $score;
 
     public function __construct()
     {
@@ -333,6 +346,18 @@ class User implements UserInterface
             $this->games->removeElement($game);
             $game->removeUser($this);
         }
+
+        return $this;
+    }
+
+    public function getScore(): ?string
+    {
+        return $this->score;
+    }
+
+    public function setScore(?string $score): self
+    {
+        $this->score = $score;
 
         return $this;
     }

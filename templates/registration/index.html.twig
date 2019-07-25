@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription - {{ parent() }}{% endblock %}
+{% block title %}{{ parent() }} - Inscription {% endblock %}
 
 {% block body %}
 
@@ -12,11 +12,9 @@
 
 <div class="example-wrapper" >
 
-
-    <h1>Inscription</h1>
+    <h4 class="title is-4" style="color: white;">Inscription</h4>
 
     {{ form_start(form) }}
-    <br>
     {{ form_row(form.lastname) }}
     <br>
     {{ form_row(form.firstname) }}
@@ -28,7 +26,7 @@
     {{ form_row(form.password) }}
     <br>
     {{ form_row(form.password) }}
-    <br>
+    <p style="color: white;">Date de naissance</p>
     {{ form_row(form.birthdate) }}
     <br>
     {{ form_row(form.streetNumber) }}
@@ -43,7 +41,7 @@
     <br>
 
     <div class="text-right">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="button">
             Enregistrer
         </button>
     </div>

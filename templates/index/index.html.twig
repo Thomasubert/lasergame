@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bonjour{% endblock %}
+{% block title %}Shinigami - Accueil{% endblock %}
 
 {% block body %}
     <style>
         .example-wrapper { margin: 1em auto; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
-
+    <br><br>
+    <div class="container">
+        <div class="notification">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cupiditate dicta dolorum illo illum iure libero nemo nobis nulla odio, optio provident sed tempora veritatis, voluptatum? Eius qui sint tempore.</p>
+        </div>
+    </div>
     <div class="container example-wrapper">
         <div class="tile is-ancestor">
             <div class="tile is-vertical is-8">
@@ -17,7 +22,7 @@
                             <p class="title">Shinigami Laser</p>
                             <p class="subtitle">Soyez les bienvenus au Shinigami Laser de Dijon!!!</p>
                             <p>
-                                Venez défier vos amis en équipe ou en individuel dans nos 2  labyrinthes avec étage, où l'obscurité, la musique et la fumée sont la pour vous dérouter.
+                                Venez défier vos amis en équipe ou en solo dans nos 2 labyrinthes avec étage, où l'obscurité, la musique et la fumée sont là pour vous dérouter.
                                 A vous de former votre stratégie, votre technique de tir pour atteindre le maximum d'adversaires.
                                 Fous rires garantis lors de la remise des résultats individuels. Pour plus de convivialité et de sécurité les groupes ne sont pas mélangés.
                                 A partir de 7 ans, de 6 à 20 joueurs maximum en même temps, 6 joueurs minimum, sur réservation, 08.38.48.68.78. Grand parking privé.</p>
@@ -25,8 +30,8 @@
                     </div>
                     <div class="tile is-parent">
                         <article class="tile is-child notification is-info">
-                            <p class="title">Middle tile</p>
-                            <p class="subtitle">With an image</p>
+                            <p class="title">Viens, on est bien...</p>
+                            <p class="subtitle">Réservation</p>
                             <figure class="image is-4by3">
                                 <img src="https://s3-eu-west-1.amazonaws.com/sc-files.pjms.fr/p/pjms/881/000/217/740/19381d66970142a8a11549a5b2cca30a.jpg">
                             </figure>
@@ -38,8 +43,8 @@
             <div class="tile is-parent">
                 <article class="tile is-child notification is-success">
                     <div class="content">
-                        <p class="title">Tall tile</p>
-                        <p class="subtitle">With even more content</p>
+                        <p class="title">Les astuces...</p>
+                        <p class="subtitle">de Mamie Traille</p>
                         <div class="content">
                             <p>Petite astuce : Mettez des baskets et portez des vêtements sombres afin d'optimiser votre discrétion et vos déplacements dans nos labyrinthes !</p>
                         </div>
@@ -55,27 +60,37 @@
         </div>
     </div>
 
-    <div class="example-wrapper">
+{% if is_granted('ROLE_USER') %}
 
-
-{% if is_granted('ROLE_USER')  %}
-
-
-<table class="table">
+<table class="table notification example-wrapper">
         <tr>
             <th>score</th>
             <th>victory</th>
-            <th>date</th>
-            <th width="250px"></th>
+
+            <th class="space"></th>
         </tr>
             <tr>
-                <td> ------</td>
-                <td> ------</td>
-                <td> ------</td>
-                <td>
-    </table><br/>
 
-                    <a href="{{ path('requestcard') }}"  
+    {% if app.user.getCard() %}
+        {% if app.user.getCard().getStatus() =="active" %}
+
+                <td> {{ app.user.score }} </td>
+
+                {% endif %}
+        {% endif %}
+
+
+                {{ dump(app.user.getCard()) }}
+
+                <td> ------</td>
+                <th width="250px"></th>
+
+                <td>
+
+
+    {% if app.user.getCard() == null %}
+
+        <a href="{{ path('requestcard') }}"
                        class="button is-info">
                          Demander une carte !
                     </a>
@@ -91,7 +106,8 @@
                 </td>
 
             </tr>
-
+</table>
+    
  {% endif %}
-    </div>
+
 {% endblock %}

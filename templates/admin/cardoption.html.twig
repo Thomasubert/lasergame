@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+{% block title %}
+
+{% endblock %}
+<div class="example-wrapper">
+
+    {{ dump(createuser.id) }}
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Téléphone</th>
+            <th>Date de naissance du joueur</th>
+            <th>Numéro</th>
+            <th>Rue</th>
+            <th>Code postal</th>
+            <th>Ville</th>
+            <th>Pays</th>
+            <th width="250px"></th>
+        </tr>
+
+        <tr>
+            <td>{{createuser.getFirstname() }}</td>
+            <td>{{createuser.getLastname() }}</td>
+            <td>{{createuser.getPhone() }}</td>
+            <td>{{createuser.getBirthdate()|date('Y-m-d')  }}</td>
+            <td>{{createuser.getStreetNumber() }}</td>
+            <td>{{createuser.getStreetName()}}</td>
+            <td>{{createuser.getZip() }}</td>
+            <td>{{createuser.getCity()}}</td>
+            <td>{{createuser.getCountry()}}</td>
+            <td> <a href="{{ path('requestcardadmin',{'id': createuser.id}) }}"
+                    class="button is-danger">
+                    Avec carte!
+                </a></td>
+            <td> <a href="{{ path('app_admin_player_index') }}"
+                    class="button is-danger">
+                    Sans carte!
+                </a></td>
+        <tr>
+    </table>
+
+</div>
+{% endblock %}

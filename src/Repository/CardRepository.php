@@ -27,23 +27,11 @@ class CardRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('u');
 
-        //$qb->orderBy('u.lastname', 'DESC');
-
-        //if (!empty($criteria['user'])) {
         $qb
             ->where('u.codeCard = :codeCard')
             ->setParameter('codeCard', $criteria['codeCard']);
         /*->where('u.checksum = :checksum')
         ->setParameter('checksum', $criteria['checksum']);*/
-
-        //}
-
-
-        //$query = $qb->getQuery();
-
-        //dump($query->getSQL());
-
-        //$qb->orderBy('u.lastname', 'DESC');
 
         return $qb
             ->getQuery()
@@ -51,44 +39,12 @@ class CardRepository extends ServiceEntityRepository
 
     }
 
-
-     /*/**
-      * Récupérer toutes les cartes par état
-      * @param string $state
-      * @return mixed
-      */
-    /*public function findCardByState(string $state)
-     {
-         return $this->createQueryBuilder('c')
-             ->where('a.state LIKE :state')
-             ->setParameter('state', "%$state%")
-             ->orderBy('c.id', 'DESC')
-             ->getQuery()
-             ->getResult();
-
-     public function findFreeCard() {
-         $qb = $this->createQueryBuilder('card')
-             ->andWhere('card.status = :customerCode')
-             ->setParameter(':customerCode', 'libre');
-         return (boolean)$qb->getQuery()->getResult();
-
-     }*/
-    // /**
-    //  * @return Card[] Returns an array of Card objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    public function findFreeCard() {
+        $qb = $this->createQueryBuilder('card')
+            ->andWhere('card.status = :customerCode')
+            ->setParameter(':customerCode', 'libre');
+        return (boolean)$qb->getQuery()->getResult();
     }
-    */
 
 
     public function findOneBySomeField($value): ?Card
@@ -100,5 +56,4 @@ class CardRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-
 }
