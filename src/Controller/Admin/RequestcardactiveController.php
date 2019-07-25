@@ -66,9 +66,6 @@ class RequestcardactiveController extends AbstractController
 
         $cards=$cardRepository->findAll();
 
-        // $lastUsername = $authenticationUtils->getLastUsername();
-
-
         if($this->getUser()->getCard()->getStatus()=="attribué")
         {
             if (($request->request->get('respcardactive')["keycenter"] == $this->getUser()->getCard()->getCodeCentre())
