@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ApiController!{% endblock %}
+{% block title %} {{ parent() }} - Classement {% endblock %}
 
 {% block body %}
 <style>
@@ -31,7 +31,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Top 10! ✅</h1>
+    <h1>Top 10!</h1>
 
     <table id="customers">
         <tr>

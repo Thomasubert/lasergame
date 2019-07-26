@@ -89,10 +89,19 @@
                 </div>
             </div>
             <a class="navbar-item" href="{{ path('app_api_index') }}">
-                Nos joueurs
+                Classement
             </a>
         </div>
 
+        {% if is_granted('ROLE_USER') %}
+
+        {% if app.user %}
+        <a href="{{ path('app_user_edit', {'id': app.user.id}) }}"
+           class="navbar-item">
+            Modifier mes infos
+        </a>
+            {% endif %}
+        {% endif %}
 
         {% if is_granted('ROLE_ADMIN')  %}
         <div class="navbar-start">
@@ -103,6 +112,8 @@
 
             </div>
             {% endif %}
+
+
 
 
 

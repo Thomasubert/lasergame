@@ -50,7 +50,7 @@
 <div class="page">
     <div class="content">
         <div class="report-details">
-            Created at 2019-07-23 11:32:48        , with PHPMetrics v2.2.0 (<a href="https://twitter.com.Halleck45">Jean-François Lépine</a>).
+            Created at 2019-07-26 10:18:51        , with PHPMetrics v2.2.0 (<a href="https://twitter.com.Halleck45">Jean-François Lépine</a>).
         </div>
     <div class="row">
         <div class="column">
@@ -63,7 +63,7 @@
         <div class="column">
             <div class="bloc bloc-number">
                 <div class="label"><a href="loc.html">Lines of code</a></div>
-                                <div class="number">13867</div>
+                                <div class="number">13871</div>
             </div>
         </div>
         <div class="column">
@@ -79,7 +79,7 @@
         <div class="column">
             <div class="bloc bloc-number">
                 <div class="label"><a href="complexity.html">Average cyclomatic complexity by class</a></div>
-                <div class="number">2.61</div>
+                <div class="number">2.6</div>
                             </div>
         </div>
         <div class="column">
@@ -183,7 +183,7 @@
                                 </tr>
                                                             <tr>
                                     <td>App\Entity\User <span class="badge"
-                                                                            title="Maintainability Index">68.99</span>
+                                                                            title="Maintainability Index">69.16</span>
                                     </td>
                                     <td>0.03</td>
                                 </tr>
@@ -302,8 +302,8 @@
                                     <td>0</td>
                                 </tr>
                                                             <tr>
-                                    <td>App\Controller\GameController <span class="badge"
-                                                                            title="Maintainability Index">87.63</span>
+                                    <td>App\Controller\GamePageController <span class="badge"
+                                                                            title="Maintainability Index">117.17</span>
                                     </td>
                                     <td>0</td>
                                 </tr>
@@ -356,20 +356,14 @@
                                     <td>0</td>
                                 </tr>
                                                             <tr>
-                                    <td>App\Controller\ApiController <span class="badge"
-                                                                            title="Maintainability Index">118</span>
+                                    <td>App\Controller\ConnexionController <span class="badge"
+                                                                            title="Maintainability Index">216.25</span>
                                     </td>
                                     <td>0</td>
                                 </tr>
                                                             <tr>
                                     <td>App\Controller\RequestcardactiveController <span class="badge"
-                                                                            title="Maintainability Index">77.77</span>
-                                    </td>
-                                    <td>0</td>
-                                </tr>
-                                                            <tr>
-                                    <td>App\Controller\ConnexionController <span class="badge"
-                                                                            title="Maintainability Index">216.25</span>
+                                                                            title="Maintainability Index">87.94</span>
                                     </td>
                                     <td>0</td>
                                 </tr>
@@ -380,14 +374,20 @@
                                     <td>0</td>
                                 </tr>
                                                             <tr>
+                                    <td>App\Controller\GameController <span class="badge"
+                                                                            title="Maintainability Index">87.63</span>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+                                                            <tr>
                                     <td>App\Kernel <span class="badge"
                                                                             title="Maintainability Index">68.95</span>
                                     </td>
                                     <td>0</td>
                                 </tr>
                                                             <tr>
-                                    <td>App\Controller\GamePageController <span class="badge"
-                                                                            title="Maintainability Index">117.17</span>
+                                    <td>App\Controller\GamersController <span class="badge"
+                                                                            title="Maintainability Index">95.79</span>
                                     </td>
                                     <td>0</td>
                                 </tr>
@@ -1227,7 +1227,7 @@
                                                             <tr>
                                     <td>phpunit/php-code-coverage</td>
                                     <td>^5.3</td>
-                                    <td>7.0.6</td>
+                                    <td>7.0.7</td>
                                     <td>                                            <a target="_blank" href="https://spdx.org/licenses/BSD-3-Clause.html">BSD-3-Clause</a>
                                                                             </td>
                                 </tr>
@@ -1249,6 +1249,13 @@
                                     <td>phpunit/php-timer</td>
                                     <td>^1.0.9</td>
                                     <td>2.1.2</td>
+                                    <td>                                            <a target="_blank" href="https://spdx.org/licenses/BSD-3-Clause.html">BSD-3-Clause</a>
+                                                                            </td>
+                                </tr>
+                                                            <tr>
+                                    <td>phpunit/phpunit</td>
+                                    <td>5.7.*</td>
+                                    <td>8.2.5</td>
                                     <td>                                            <a target="_blank" href="https://spdx.org/licenses/BSD-3-Clause.html">BSD-3-Clause</a>
                                                                             </td>
                                 </tr>
@@ -1365,6 +1372,13 @@
                                                                             </td>
                                 </tr>
                                                             <tr>
+                                    <td>symfony/http-client</td>
+                                    <td>4.3.*</td>
+                                    <td>4.3.2</td>
+                                    <td>                                            <a target="_blank" href="https://spdx.org/licenses/MIT.html">MIT</a>
+                                                                            </td>
+                                </tr>
+                                                            <tr>
                                     <td>symfony/orm-pack</td>
                                     <td>^1.0</td>
                                     <td>1.0.6</td>
@@ -1466,7 +1480,7 @@
                 });
 
                 // prepare json for packages pie
-                                chartLicenses([{"name":"MIT","value":20},{"name":"BSD-3-Clause","value":15}]);
+                                chartLicenses([{"name":"MIT","value":21},{"name":"BSD-3-Clause","value":16}]);
             }
         };
     </script>
