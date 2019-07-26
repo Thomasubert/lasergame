@@ -40,9 +40,8 @@ class RequestcardactiveController extends AbstractController
 
         $cards=$cardRepository->findAll();
 
-        $lastUsername = $authenticationUtils->getLastUsername();
+       // $lastUsername = $authenticationUtils->getLastUsername();
 
-       // dd($this->getUser()->getCard()->getStatus()=="attribué");
 
         if($this->getUser()->getCard()->getStatus()=="attribué")
         {
@@ -50,7 +49,6 @@ class RequestcardactiveController extends AbstractController
                 && ($request->request->get('respcardactive')["keycard"] == $this->getUser()->getCard()->getcodeCard())
                 && ($request->request->get('respcardactive')["checksum"] == $this->getUser()->getCard()->getChecksum()))
             {
-               // $this->getUser()->setCard()->setStatus("active");
                 $this->getUser()->getCard()->setStatus("active");
                 //dd($this->getUser()->getCard()->getStatus("active"));
                 $em->persist($this->getUser());
