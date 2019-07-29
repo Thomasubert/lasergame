@@ -37,7 +37,7 @@ class CardRepository extends ServiceEntityRepository
 
     }
 
-    public function findFreeCard() {
+    public function existsFreeCard() {
         $qb = $this->createQueryBuilder('card')
             ->andWhere('card.status = :customerCode')
             ->setParameter(':customerCode', 'libre');
@@ -45,13 +45,12 @@ class CardRepository extends ServiceEntityRepository
     }
 
 
-    public function findOneBySomeField($value): ?Card
+    public function findFreeCard()
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $qb = $this->createQueryBuilder('card')
+            ->andWhere('card.status = :customerCode')
+            ->setParameter(':customerCode', 'libre');
+        $qb->setMaxResults( 1 );
+        return $qb->getQuery()->getScalarResult();
     }
 }

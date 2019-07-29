@@ -70,7 +70,6 @@ class RequestcardactiveController extends AbstractController
                 && ($request->request->get('respcardactive')["checksum"] == $this->getUser()->getCard()->getChecksum()))
             {
                 $this->getUser()->getCard()->setStatus("active");
-                //dd($this->getUser()->getCard()->getStatus("active"));
                 $em->persist($this->getUser());
                 $em->flush();
                 $this->addFlash('success', 'La carte est activée');
