@@ -47,7 +47,7 @@ class RequestcardController extends AbstractController
         $cards = $cardRepository->findAll();
         $result = $em->find(User::class, $id);
 
-        if($checkCardFree=$cardRepository->findFreeCard()==false)
+        if($checkCardFree=$cardRepository->existsFreeCard()==false)
         {
             $this->addFlash('success', 'Les cartes sont indisponible en stock, le joueur est enregistré');
 
@@ -55,17 +55,10 @@ class RequestcardController extends AbstractController
                 'users' => $users
             ]);
         }
-
-        foreach ($cards as $key => $value) {
-
-            if ($value->getStatus() == "libre") {
-                  $value->setStatus("attribué");
-                  $result->setCard($value);
-                  $em->persist($result);
-                  $em->flush();
-                  break;
-            }
-        }
+        $value=$cardRepository->findFreeCard()->setStatus[5]("attribuée");
+        dd($value);
+        $result->setCard($value);
+        $em->flush();
 
         $this->addFlash('success', 'La carte est attribué');
         return $this->render('admin/index.html.twig', [
