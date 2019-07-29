@@ -56,7 +56,7 @@ class RequestcardController extends AbstractController
             ]);
         }
         $value=$cardRepository->findFreeCard()->setStatus[5]("attribuée");
-        dd($value);
+        //dd($value);
         $result->setCard($value);
         $em->flush();
 
