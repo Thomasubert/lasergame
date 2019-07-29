@@ -49,7 +49,7 @@ class RequestcardController extends AbstractController
 
         if($checkCardFree=$cardRepository->findFreeCard()==false)
         {
-            $this->addFlash('success', 'Les cartes sont indisponible en stock, le joueur est enregistré');
+            $this->addFlash('success', "Il n'y a pas de carte en stock");
 
             return $this->render('admin/index.html.twig', [
                 'users' => $users
